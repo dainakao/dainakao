@@ -1,0 +1,771 @@
+、そ,Ngram_青菜.txt,57
+、こ,Ngram_大安売り.txt,96
+、う,Ngram_うそつき村.txt,11
+、じ,Ngram_青菜.txt,146
+、「,Ngram_青菜.txt,142
+、か,Ngram_青菜.txt,112
+、「,Ngram_居酒屋.txt,34
+、じ,Ngram_青菜 - コピー.txt,146
+、そ,Ngram_青菜 - コピー.txt,57
+、か,Ngram_青菜 - コピー.txt,112
+、「,Ngram_青菜 - コピー.txt,142
+、こ,Ngram_うそつき村.txt,90
+、「,Ngram_居酒屋.txt,55
+、弁,Ngram_青菜.txt,149
+、取,Ngram_青菜.txt,29
+、出,Ngram_青菜.txt,4
+、取,Ngram_青菜 - コピー.txt,29
+、向,Ngram_大安売り.txt,87
+、出,Ngram_青菜 - コピー.txt,4
+、大,Ngram_大安売り.txt,121
+、弁,Ngram_青菜 - コピー.txt,149
+、感,Ngram_青菜 - コピー.txt,88
+、感,Ngram_青菜.txt,88
+、義,Ngram_青菜 - コピー.txt,70
+、義,Ngram_青菜.txt,70
+。さ,Ngram_青菜.txt,97
+。そ,Ngram_うそつき村.txt,146
+。さ,Ngram_うそつき村.txt,42
+。や,Ngram_うそつき村.txt,76
+。さ,Ngram_青菜 - コピー.txt,97
+。「,Ngram_大安売り.txt,63
+。」,Ngram_居酒屋.txt,117
+。そ,Ngram_うそつき村.txt,116
+。初,Ngram_大安売り.txt,46
+。小,Ngram_居酒屋.txt,24
+。無,Ngram_居酒屋.txt,78
+。菜,Ngram_青菜.txt,19
+。菜,Ngram_青菜 - コピー.txt,19
+「ん,Ngram_青菜.txt,143
+「じ,Ngram_青菜.txt,67
+「そ,Ngram_青菜.txt,118
+「よ,Ngram_居酒屋.txt,35
+「ア,Ngram_居酒屋.txt,88
+「そ,Ngram_うそつき村.txt,176
+「は,Ngram_大安売り.txt,84
+「ん,Ngram_青菜 - コピー.txt,143
+「そ,Ngram_青菜 - コピー.txt,118
+「じ,Ngram_青菜 - コピー.txt,67
+「そ,Ngram_うそつき村.txt,188
+「い,Ngram_居酒屋.txt,56
+「そ,Ngram_大安売り.txt,106
+「勝,Ngram_大安売り.txt,28
+「勝,Ngram_大安売り.txt,64
+「成,Ngram_大安売り.txt,15
+「鞍,Ngram_青菜.txt,43
+「鞍,Ngram_青菜 - コピー.txt,43
+「雲,Ngram_うそつき村.txt,156
+」「,Ngram_青菜.txt,66
+」と,Ngram_居酒屋.txt,52
+」と,Ngram_居酒屋.txt,75
+」と,Ngram_青菜 - コピー.txt,129
+」「,Ngram_大安売り.txt,105
+」「,Ngram_うそつき村.txt,187
+」と,Ngram_青菜.txt,78
+」と,Ngram_青菜.txt,129
+」「,Ngram_大安売り.txt,83
+」と,Ngram_大安売り.txt,24
+」と,Ngram_青菜 - コピー.txt,78
+」「,Ngram_うそつき村.txt,175
+」と,Ngram_大安売り.txt,41
+」「,Ngram_青菜 - コピー.txt,66
+ある,Ngram_うそつき村.txt,182
+い、,Ngram_大安売り.txt,86
+いた,Ngram_うそつき村.txt,151
+いと,Ngram_うそつき村.txt,36
+いか,Ngram_大安売り.txt,81
+いる,Ngram_うそつき村.txt,7
+い。,Ngram_居酒屋.txt,116
+い。,Ngram_うそつき村.txt,75
+いと,Ngram_うそつき村.txt,110
+いな,Ngram_居酒屋.txt,15
+いく,Ngram_大安売り.txt,56
+いて,Ngram_大安売り.txt,54
+いの,Ngram_居酒屋.txt,61
+いが,Ngram_居酒屋.txt,7
+い」,Ngram_居酒屋.txt,51
+いる,Ngram_居酒屋.txt,22
+いろ,Ngram_居酒屋.txt,57
+うと,Ngram_青菜.txt,107
+うと,Ngram_青菜.txt,35
+うと,Ngram_青菜.txt,41
+うが,Ngram_うそつき村.txt,88
+う」,Ngram_うそつき村.txt,204
+うだ,Ngram_大安売り.txt,20
+うな,Ngram_居酒屋.txt,72
+うな,Ngram_居酒屋.txt,37
+う」,Ngram_大安売り.txt,133
+うと,Ngram_青菜 - コピー.txt,35
+うそ,Ngram_うそつき村.txt,60
+うそ,Ngram_うそつき村.txt,12
+うな,Ngram_うそつき村.txt,165
+うと,Ngram_青菜 - コピー.txt,107
+うと,Ngram_青菜 - コピー.txt,41
+うが,Ngram_大安売り.txt,90
+うな,Ngram_うそつき村.txt,138
+え。,Ngram_大安売り.txt,45
+おけ,Ngram_青菜.txt,155
+おけ,Ngram_青菜 - コピー.txt,155
+おけ,Ngram_青菜.txt,76
+おけ,Ngram_青菜 - コピー.txt,76
+かれ,Ngram_青菜.txt,27
+かみ,Ngram_青菜.txt,113
+かと,Ngram_青菜.txt,24
+か」,Ngram_大安売り.txt,82
+かけ,Ngram_うそつき村.txt,52
+か。,Ngram_居酒屋.txt,77
+か」,Ngram_うそつき村.txt,186
+かと,Ngram_青菜 - コピー.txt,24
+かれ,Ngram_青菜 - コピー.txt,27
+から,Ngram_大安売り.txt,2
+かみ,Ngram_青菜 - コピー.txt,113
+かい,Ngram_居酒屋.txt,14
+か、,Ngram_居酒屋.txt,54
+かろ,Ngram_大安売り.txt,131
+から,Ngram_居酒屋.txt,12
+から,Ngram_大安売り.txt,49
+が「,Ngram_青菜.txt,117
+が、,Ngram_うそつき村.txt,89
+が、,Ngram_青菜 - コピー.txt,3
+がに,Ngram_うそつき村.txt,198
+がま,Ngram_うそつき村.txt,93
+があ,Ngram_うそつき村.txt,181
+が「,Ngram_大安売り.txt,14
+が、,Ngram_青菜.txt,111
+が「,Ngram_うそつき村.txt,155
+が、,Ngram_青菜.txt,3
+がら,Ngram_居酒屋.txt,17
+が、,Ngram_青菜 - コピー.txt,111
+が「,Ngram_青菜 - コピー.txt,117
+が判,Ngram_うそつき村.txt,71
+が好,Ngram_青菜 - コピー.txt,21
+が小,Ngram_居酒屋.txt,8
+が好,Ngram_青菜.txt,21
+が出,Ngram_青菜.txt,51
+が勝,Ngram_大安売り.txt,91
+が帰,Ngram_うそつき村.txt,122
+が出,Ngram_青菜 - コピー.txt,51
+が全,Ngram_うそつき村.txt,132
+が村,Ngram_うそつき村.txt,55
+が皆,Ngram_うそつき村.txt,58
+が負,Ngram_大安売り.txt,100
+が鮟,Ngram_居酒屋.txt,93
+きて,Ngram_うそつき村.txt,126
+きな,Ngram_うそつき村.txt,63
+き、,Ngram_青菜.txt,87
+きで,Ngram_うそつき村.txt,101
+きか,Ngram_青菜 - コピー.txt,23
+きた,Ngram_うそつき村.txt,144
+きか,Ngram_青菜.txt,23
+き、,Ngram_青菜 - コピー.txt,87
+きな,Ngram_うそつき村.txt,168
+き村,Ngram_うそつき村.txt,15
+き抜,Ngram_うそつき村.txt,160
+き込,Ngram_うそつき村.txt,39
+く「,Ngram_大安売り.txt,27
+くと,Ngram_大安売り.txt,57
+く嘘,Ngram_うそつき村.txt,46
+く真,Ngram_青菜 - コピー.txt,101
+く真,Ngram_青菜.txt,101
+け」,Ngram_青菜 - コピー.txt,77
+けた,Ngram_大安売り.txt,102
+け。,Ngram_大安売り.txt,62
+け」,Ngram_青菜.txt,156
+け」,Ngram_青菜 - コピー.txt,156
+ける,Ngram_大安売り.txt,112
+ける,Ngram_うそつき村.txt,162
+け」,Ngram_青菜.txt,77
+けた,Ngram_大安売り.txt,34
+けた,Ngram_大安売り.txt,70
+ける,Ngram_うそつき村.txt,53
+げ出,Ngram_うそつき村.txt,113
+げ足,Ngram_居酒屋.txt,29
+こち,Ngram_大安売り.txt,97
+この,Ngram_うそつき村.txt,128
+こい,Ngram_居酒屋.txt,115
+こい,Ngram_居酒屋.txt,50
+こう,Ngram_大安売り.txt,89
+これ,Ngram_うそつき村.txt,103
+これ,Ngram_うそつき村.txt,91
+こへ,Ngram_うそつき村.txt,118
+ごん,Ngram_大安売り.txt,38
+ご馳,Ngram_青菜.txt,13
+ご馳,Ngram_青菜 - コピー.txt,13
+さん,Ngram_青菜 - コピー.txt,115
+さっ,Ngram_青菜.txt,98
+さん,Ngram_うそつき村.txt,23
+さっ,Ngram_青菜 - コピー.txt,98
+さっ,Ngram_うそつき村.txt,43
+さん,Ngram_青菜.txt,115
+しま,Ngram_青菜 - コピー.txt,136
+して,Ngram_青菜 - コピー.txt,91
+して,Ngram_青菜 - コピー.txt,153
+した,Ngram_大安売り.txt,127
+して,Ngram_青菜.txt,55
+して,Ngram_青菜.txt,74
+しよ,Ngram_青菜 - コピー.txt,105
+して,Ngram_青菜 - コピー.txt,74
+して,Ngram_青菜 - コピー.txt,55
+して,Ngram_青菜.txt,153
+しよ,Ngram_青菜.txt,105
+しま,Ngram_青菜.txt,136
+して,Ngram_青菜.txt,91
+して,Ngram_うそつき村.txt,5
+し言,Ngram_青菜 - コピー.txt,82
+し言,Ngram_青菜.txt,82
+じゃ,Ngram_青菜 - コピー.txt,68
+じゃ,Ngram_青菜 - コピー.txt,147
+じゃ,Ngram_大安売り.txt,78
+じゃ,Ngram_青菜.txt,147
+じゃ,Ngram_青菜.txt,68
+する,Ngram_青菜 - コピー.txt,109
+す。,Ngram_うそつき村.txt,115
+する,Ngram_青菜.txt,109
+す」,Ngram_大安売り.txt,40
+せよ,Ngram_青菜 - コピー.txt,33
+せよ,Ngram_青菜.txt,33
+そく,Ngram_青菜 - コピー.txt,100
+それ,Ngram_うそつき村.txt,147
+そく,Ngram_青菜.txt,100
+その,Ngram_青菜 - コピー.txt,119
+その,Ngram_青菜.txt,119
+その,Ngram_青菜.txt,58
+その,Ngram_青菜 - コピー.txt,58
+そつ,Ngram_うそつき村.txt,13
+それ,Ngram_うそつき村.txt,189
+そん,Ngram_うそつき村.txt,28
+そん,Ngram_うそつき村.txt,177
+そく,Ngram_うそつき村.txt,45
+その,Ngram_うそつき村.txt,193
+そん,Ngram_大安売り.txt,107
+そつ,Ngram_うそつき村.txt,61
+そこ,Ngram_うそつき村.txt,117
+たり,Ngram_大安売り.txt,67
+たり,Ngram_大安売り.txt,71
+たら,Ngram_大安売り.txt,128
+たの,Ngram_青菜 - コピー.txt,139
+た。,Ngram_うそつき村.txt,145
+たが,Ngram_うそつき村.txt,197
+たり,Ngram_大安売り.txt,103
+たり,Ngram_大安売り.txt,35
+た」,Ngram_大安売り.txt,23
+たの,Ngram_青菜.txt,139
+たら,Ngram_居酒屋.txt,103
+たり,Ngram_大安売り.txt,31
+たよ,Ngram_うそつき村.txt,173
+たり,Ngram_大安売り.txt,94
+たじ,Ngram_大安売り.txt,77
+た大,Ngram_うそつき村.txt,95
+た子,Ngram_うそつき村.txt,152
+た関,Ngram_大安売り.txt,6
+だっ,Ngram_大安売り.txt,21
+だっ,Ngram_居酒屋.txt,101
+だろ,Ngram_うそつき村.txt,202
+ちら,Ngram_大安売り.txt,98
+って,Ngram_青菜.txt,134
+った,Ngram_大安売り.txt,93
+った,Ngram_大安売り.txt,66
+っと,Ngram_うそつき村.txt,78
+った,Ngram_大安売り.txt,30
+って,Ngram_大安売り.txt,73
+って,Ngram_居酒屋.txt,41
+って,Ngram_居酒屋.txt,113
+った,Ngram_青菜.txt,138
+って,Ngram_居酒屋.txt,48
+った,Ngram_大安売り.txt,5
+った,Ngram_居酒屋.txt,102
+っそ,Ngram_青菜.txt,99
+っそ,Ngram_うそつき村.txt,44
+った,Ngram_大安売り.txt,22
+った,Ngram_大安売り.txt,76
+っそ,Ngram_青菜 - コピー.txt,99
+って,Ngram_うそつき村.txt,124
+った,Ngram_青菜 - コピー.txt,138
+って,Ngram_青菜 - コピー.txt,134
+っ払,Ngram_居酒屋.txt,5
+つと,Ngram_居酒屋.txt,69
+つき,Ngram_うそつき村.txt,14
+つき,Ngram_うそつき村.txt,100
+つき,Ngram_うそつき村.txt,62
+てお,Ngram_青菜.txt,154
+てお,Ngram_青菜.txt,75
+て、,Ngram_青菜.txt,56
+てし,Ngram_青菜.txt,135
+てこ,Ngram_居酒屋.txt,114
+てい,Ngram_うそつき村.txt,6
+て、,Ngram_青菜 - コピー.txt,56
+てお,Ngram_青菜 - コピー.txt,75
+てき,Ngram_うそつき村.txt,143
+てき,Ngram_うそつき村.txt,125
+てお,Ngram_青菜 - コピー.txt,154
+てこ,Ngram_うそつき村.txt,127
+てい,Ngram_大安売り.txt,55
+ての,Ngram_居酒屋.txt,42
+てし,Ngram_青菜 - コピー.txt,135
+てこ,Ngram_居酒屋.txt,49
+て家,Ngram_青菜.txt,92
+て家,Ngram_青菜 - コピー.txt,92
+て入,Ngram_うそつき村.txt,134
+て言,Ngram_大安売り.txt,74
+では,Ngram_うそつき村.txt,105
+でこ,Ngram_うそつき村.txt,102
+では,Ngram_うそつき村.txt,191
+では,Ngram_うそつき村.txt,33
+でい,Ngram_居酒屋.txt,21
+でご,Ngram_大安売り.txt,37
+で、,Ngram_青菜 - コピー.txt,141
+で、,Ngram_青菜.txt,141
+でま,Ngram_青菜.txt,53
+でま,Ngram_青菜 - コピー.txt,53
+で弥,Ngram_うそつき村.txt,66
+で番,Ngram_居酒屋.txt,107
+で酒,Ngram_青菜 - コピー.txt,10
+で酔,Ngram_居酒屋.txt,3
+で酒,Ngram_青菜.txt,10
+とか,Ngram_居酒屋.txt,76
+との,Ngram_青菜 - コピー.txt,79
+とど,Ngram_居酒屋.txt,70
+とす,Ngram_青菜.txt,108
+と「,Ngram_青菜.txt,42
+とか,Ngram_居酒屋.txt,53
+とし,Ngram_大安売り.txt,126
+と「,Ngram_青菜 - コピー.txt,42
+との,Ngram_青菜.txt,79
+との,Ngram_大安売り.txt,42
+とす,Ngram_青菜 - コピー.txt,108
+と全,Ngram_大安売り.txt,58
+と出,Ngram_うそつき村.txt,85
+と吹,Ngram_うそつき村.txt,37
+と弥,Ngram_うそつき村.txt,79
+と全,Ngram_青菜 - コピー.txt,130
+と奥,Ngram_青菜 - コピー.txt,36
+と奥,Ngram_青菜.txt,36
+と全,Ngram_青菜.txt,130
+と聞,Ngram_大安売り.txt,25
+と聞,Ngram_青菜.txt,25
+と聞,Ngram_青菜 - コピー.txt,25
+と逃,Ngram_うそつき村.txt,111
+どう,Ngram_居酒屋.txt,71
+どう,Ngram_大安売り.txt,19
+ない,Ngram_大安売り.txt,80
+なら,Ngram_大安売り.txt,115
+なも,Ngram_居酒屋.txt,38
+ない,Ngram_うそつき村.txt,109
+なも,Ngram_うそつき村.txt,30
+なに,Ngram_大安売り.txt,109
+ない,Ngram_うそつき村.txt,74
+なが,Ngram_居酒屋.txt,16
+ない,Ngram_うそつき村.txt,35
+なる,Ngram_居酒屋.txt,98
+なる,Ngram_青菜.txt,17
+なる,Ngram_居酒屋.txt,73
+なる,Ngram_青菜 - コピー.txt,17
+なの,Ngram_うそつき村.txt,64
+な嘘,Ngram_うそつき村.txt,98
+な大,Ngram_うそつき村.txt,166
+な桶,Ngram_うそつき村.txt,139
+な竹,Ngram_うそつき村.txt,179
+な竹,Ngram_うそつき村.txt,169
+にな,Ngram_青菜.txt,16
+にし,Ngram_青菜.txt,152
+に、,Ngram_うそつき村.txt,10
+にし,Ngram_青菜 - コピー.txt,152
+にし,Ngram_青菜 - コピー.txt,73
+にな,Ngram_居酒屋.txt,97
+にな,Ngram_青菜 - コピー.txt,16
+にま,Ngram_大安売り.txt,110
+にし,Ngram_青菜.txt,73
+にし,Ngram_うそつき村.txt,4
+には,Ngram_居酒屋.txt,86
+に困,Ngram_うそつき村.txt,199
+に帰,Ngram_青菜 - コピー.txt,94
+に出,Ngram_うそつき村.txt,50
+に帰,Ngram_青菜.txt,94
+に濁,Ngram_居酒屋.txt,64
+に町,Ngram_大安売り.txt,9
+に聞,Ngram_大安売り.txt,52
+に言,Ngram_青菜 - コピー.txt,39
+に言,Ngram_青菜.txt,39
+ので,Ngram_青菜.txt,140
+ので,Ngram_うそつき村.txt,65
+ので,Ngram_青菜 - コピー.txt,140
+のた,Ngram_うそつき村.txt,196
+のっ,Ngram_居酒屋.txt,40
+のか,Ngram_うそつき村.txt,185
+ので,Ngram_うそつき村.txt,32
+のい,Ngram_居酒屋.txt,60
+のな,Ngram_大安売り.txt,114
+の一,Ngram_居酒屋.txt,43
+の仕,Ngram_居酒屋.txt,83
+の人,Ngram_大安売り.txt,12
+の名,Ngram_青菜.txt,59
+の名,Ngram_青菜.txt,120
+の名,Ngram_青菜 - コピー.txt,59
+の家,Ngram_青菜 - コピー.txt,8
+の地,Ngram_うそつき村.txt,129
+の名,Ngram_青菜 - コピー.txt,120
+の字,Ngram_居酒屋.txt,62
+の家,Ngram_うそつき村.txt,69
+の家,Ngram_青菜.txt,8
+の嘘,Ngram_うそつき村.txt,25
+の子,Ngram_うそつき村.txt,82
+の弥,Ngram_うそつき村.txt,20
+の桶,Ngram_うそつき村.txt,194
+の揚,Ngram_居酒屋.txt,27
+の答,Ngram_大安売り.txt,43
+の隠,Ngram_青菜 - コピー.txt,80
+の隠,Ngram_青菜.txt,80
+の鉄,Ngram_うそつき村.txt,17
+はな,Ngram_うそつき村.txt,34
+はそ,Ngram_うそつき村.txt,27
+はい,Ngram_大安売り.txt,85
+はの,Ngram_居酒屋.txt,59
+はそ,Ngram_うそつき村.txt,192
+はど,Ngram_大安売り.txt,18
+は「,Ngram_居酒屋.txt,87
+は敵,Ngram_うそつき村.txt,106
+へ弥,Ngram_うそつき村.txt,119
+べに,Ngram_うそつき村.txt,49
+まけ,Ngram_大安売り.txt,111
+また,Ngram_うそつき村.txt,94
+まっ,Ngram_青菜 - コピー.txt,137
+まっ,Ngram_青菜.txt,137
+まし,Ngram_青菜.txt,54
+まし,Ngram_青菜 - コピー.txt,54
+みさ,Ngram_青菜 - コピー.txt,114
+みさ,Ngram_青菜.txt,114
+む。,Ngram_うそつき村.txt,41
+もの,Ngram_うそつき村.txt,184
+もの,Ngram_居酒屋.txt,39
+もの,Ngram_うそつき村.txt,31
+もっ,Ngram_居酒屋.txt,47
+もっ,Ngram_居酒屋.txt,112
+ゃ、,Ngram_青菜 - コピー.txt,148
+ゃ、,Ngram_青菜.txt,148
+ゃな,Ngram_大安売り.txt,79
+ゃ、,Ngram_青菜.txt,69
+ゃ、,Ngram_青菜 - コピー.txt,69
+やっ,Ngram_うそつき村.txt,77
+よう,Ngram_うそつき村.txt,164
+よう,Ngram_青菜.txt,106
+よう,Ngram_青菜.txt,34
+より,Ngram_青菜 - コピー.txt,46
+より,Ngram_青菜.txt,46
+よう,Ngram_うそつき村.txt,137
+よ」,Ngram_うそつき村.txt,174
+よう,Ngram_青菜 - コピー.txt,34
+よう,Ngram_居酒屋.txt,36
+よう,Ngram_青菜 - コピー.txt,106
+らが,Ngram_大安売り.txt,99
+らな,Ngram_うそつき村.txt,73
+らか,Ngram_居酒屋.txt,13
+ら帰,Ngram_大安売り.txt,3
+ら四,Ngram_大安売り.txt,116
+ら番,Ngram_居酒屋.txt,104
+ら良,Ngram_大安売り.txt,129
+ら飲,Ngram_居酒屋.txt,18
+ら順,Ngram_大安売り.txt,50
+りの,Ngram_青菜.txt,7
+り」,Ngram_大安売り.txt,104
+りで,Ngram_大安売り.txt,36
+りを,Ngram_居酒屋.txt,66
+りと,Ngram_大安売り.txt,125
+りの,Ngram_青菜 - コピー.txt,7
+りっ,Ngram_大安売り.txt,72
+り、,Ngram_居酒屋.txt,33
+り、,Ngram_大安売り.txt,95
+り寄,Ngram_青菜.txt,31
+り寄,Ngram_青菜 - コピー.txt,31
+り牛,Ngram_青菜.txt,47
+り牛,Ngram_青菜 - コピー.txt,47
+り負,Ngram_大安売り.txt,68
+り負,Ngram_大安売り.txt,32
+るよ,Ngram_うそつき村.txt,163
+るが,Ngram_青菜 - コピー.txt,110
+るも,Ngram_うそつき村.txt,183
+る。,Ngram_青菜 - コピー.txt,18
+るが,Ngram_うそつき村.txt,54
+るよ,Ngram_うそつき村.txt,136
+るだ,Ngram_うそつき村.txt,201
+る。,Ngram_青菜.txt,96
+るが,Ngram_青菜.txt,110
+る。,Ngram_居酒屋.txt,23
+るの,Ngram_大安売り.txt,113
+る。,Ngram_青菜 - コピー.txt,96
+るん,Ngram_居酒屋.txt,99
+る」,Ngram_居酒屋.txt,74
+る。,Ngram_青菜.txt,18
+る男,Ngram_うそつき村.txt,8
+れ、,Ngram_青菜 - コピー.txt,28
+れ、,Ngram_青菜.txt,28
+れが,Ngram_うそつき村.txt,92
+れで,Ngram_うそつき村.txt,190
+れで,Ngram_うそつき村.txt,104
+れを,Ngram_うそつき村.txt,148
+ろう,Ngram_うそつき村.txt,203
+ろう,Ngram_大安売り.txt,132
+ろは,Ngram_居酒屋.txt,58
+わな,Ngram_うそつき村.txt,108
+をご,Ngram_青菜 - コピー.txt,12
+をし,Ngram_青菜 - コピー.txt,104
+をか,Ngram_居酒屋.txt,11
+を、,Ngram_大安売り.txt,120
+をも,Ngram_居酒屋.txt,111
+をご,Ngram_青菜.txt,12
+をし,Ngram_青菜.txt,104
+を九,Ngram_青菜.txt,122
+を九,Ngram_青菜 - コピー.txt,61
+を九,Ngram_青菜.txt,61
+を九,Ngram_青菜 - コピー.txt,122
+を取,Ngram_居酒屋.txt,31
+を打,Ngram_居酒屋.txt,67
+を突,Ngram_うそつき村.txt,158
+を見,Ngram_うそつき村.txt,141
+を聞,Ngram_うそつき村.txt,149
+を聞,Ngram_青菜.txt,85
+を聞,Ngram_青菜 - コピー.txt,85
+を見,Ngram_うそつき村.txt,171
+を自,Ngram_うそつき村.txt,1
+んな,Ngram_うそつき村.txt,29
+んが,Ngram_青菜.txt,116
+んす,Ngram_大安売り.txt,39
+んの,Ngram_うそつき村.txt,24
+んな,Ngram_大安売り.txt,108
+んで,Ngram_居酒屋.txt,20
+んな,Ngram_うそつき村.txt,178
+んだ,Ngram_居酒屋.txt,100
+んー,Ngram_青菜 - コピー.txt,144
+んー,Ngram_青菜.txt,144
+んが,Ngram_青菜 - コピー.txt,116
+アン,Ngram_居酒屋.txt,89
+ウが,Ngram_居酒屋.txt,92
+コウ,Ngram_居酒屋.txt,91
+ンコ,Ngram_居酒屋.txt,90
+ー、,Ngram_青菜.txt,145
+ー、,Ngram_青菜 - コピー.txt,145
+一人,Ngram_居酒屋.txt,44
+丸が,Ngram_青菜.txt,50
+丸が,Ngram_青菜 - コピー.txt,50
+九郎,Ngram_青菜.txt,62
+九郎,Ngram_青菜 - コピー.txt,62
+九郎,Ngram_青菜.txt,123
+九郎,Ngram_青菜 - コピー.txt,123
+人が,Ngram_大安売り.txt,13
+人が,Ngram_うそつき村.txt,57
+人前,Ngram_居酒屋.txt,45
+仕舞,Ngram_居酒屋.txt,84
+会う,Ngram_うそつき村.txt,87
+似を,Ngram_青菜 - コピー.txt,103
+似を,Ngram_青菜.txt,103
+供が,Ngram_うそつき村.txt,154
+供と,Ngram_うそつき村.txt,84
+僧の,Ngram_居酒屋.txt,26
+僧を,Ngram_居酒屋.txt,10
+入り,Ngram_青菜 - コピー.txt,6
+入る,Ngram_うそつき村.txt,135
+入り,Ngram_青菜.txt,6
+全て,Ngram_うそつき村.txt,133
+全部,Ngram_青菜 - コピー.txt,131
+全部,Ngram_大安売り.txt,59
+全部,Ngram_青菜.txt,131
+八が,Ngram_うそつき村.txt,121
+八の,Ngram_うそつき村.txt,81
+八さ,Ngram_うそつき村.txt,22
+八の,Ngram_うそつき村.txt,68
+公鍋,Ngram_居酒屋.txt,109
+内の,Ngram_大安売り.txt,11
+出で,Ngram_青菜 - コピー.txt,52
+出で,Ngram_青菜.txt,52
+出か,Ngram_うそつき村.txt,51
+出す,Ngram_うそつき村.txt,114
+出会,Ngram_うそつき村.txt,86
+出入,Ngram_青菜 - コピー.txt,5
+出入,Ngram_青菜.txt,5
+初日,Ngram_大安売り.txt,47
+判ら,Ngram_うそつき村.txt,72
+判官,Ngram_青菜 - コピー.txt,125
+判官,Ngram_青菜 - コピー.txt,64
+判官,Ngram_青菜.txt,125
+判官,Ngram_青菜.txt,64
+前も,Ngram_居酒屋.txt,46
+勝っ,Ngram_大安売り.txt,92
+勝っ,Ngram_大安売り.txt,65
+勝っ,Ngram_大安売り.txt,29
+取り,Ngram_居酒屋.txt,32
+取に,Ngram_大安売り.txt,8
+取り,Ngram_青菜.txt,30
+取り,Ngram_青菜 - コピー.txt,30
+名を,Ngram_青菜 - コピー.txt,121
+名を,Ngram_青菜 - コピー.txt,60
+名を,Ngram_青菜.txt,60
+名を,Ngram_大安売り.txt,119
+名を,Ngram_青菜.txt,121
+向こ,Ngram_大安売り.txt,88
+吹き,Ngram_うそつき村.txt,38
+嘘は,Ngram_うそつき村.txt,26
+嘘つ,Ngram_うそつき村.txt,99
+嘘を,Ngram_うそつき村.txt,0
+嘘比,Ngram_うそつき村.txt,47
+四股,Ngram_大安売り.txt,117
+困る,Ngram_うそつき村.txt,200
+地球,Ngram_うそつき村.txt,130
+売り,Ngram_大安売り.txt,124
+変な,Ngram_うそつき村.txt,97
+大き,Ngram_うそつき村.txt,167
+大変,Ngram_うそつき村.txt,96
+大安,Ngram_大安売り.txt,122
+奥様,Ngram_青菜.txt,37
+奥様,Ngram_青菜 - コピー.txt,37
+好き,Ngram_青菜.txt,22
+好き,Ngram_青菜 - コピー.txt,22
+子供,Ngram_うそつき村.txt,153
+子供,Ngram_うそつき村.txt,83
+字に,Ngram_居酒屋.txt,63
+安売,Ngram_大安売り.txt,123
+官」,Ngram_青菜 - コピー.txt,65
+官」,Ngram_青菜.txt,65
+官義,Ngram_青菜.txt,126
+官義,Ngram_青菜 - コピー.txt,126
+家に,Ngram_青菜.txt,93
+家が,Ngram_うそつき村.txt,70
+家で,Ngram_青菜.txt,9
+家に,Ngram_青菜 - コピー.txt,93
+家で,Ngram_青菜 - コピー.txt,9
+寄せ,Ngram_青菜.txt,32
+寄せ,Ngram_青菜 - コピー.txt,32
+小僧,Ngram_居酒屋.txt,25
+小僧,Ngram_居酒屋.txt,9
+居酒,Ngram_居酒屋.txt,0
+屋で,Ngram_居酒屋.txt,2
+屋が,Ngram_青菜 - コピー.txt,2
+屋が,Ngram_青菜.txt,2
+巡業,Ngram_大安売り.txt,0
+帰っ,Ngram_大安売り.txt,4
+帰る,Ngram_青菜 - コピー.txt,95
+帰る,Ngram_青菜.txt,95
+帰っ,Ngram_うそつき村.txt,123
+弁慶,Ngram_青菜 - コピー.txt,150
+弁慶,Ngram_青菜.txt,150
+弥八,Ngram_うそつき村.txt,120
+弥八,Ngram_うそつき村.txt,67
+弥八,Ngram_うそつき村.txt,80
+弥八,Ngram_うそつき村.txt,21
+心し,Ngram_青菜 - コピー.txt,90
+心し,Ngram_青菜.txt,90
+感心,Ngram_青菜 - コピー.txt,89
+感心,Ngram_青菜.txt,89
+慢に,Ngram_うそつき村.txt,3
+慶に,Ngram_青菜 - コピー.txt,151
+慶に,Ngram_青菜.txt,151
+成績,Ngram_大安売り.txt,16
+打つ,Ngram_居酒屋.txt,68
+払い,Ngram_居酒屋.txt,6
+抜け,Ngram_うそつき村.txt,161
+揚げ,Ngram_居酒屋.txt,28
+敵わ,Ngram_うそつき村.txt,107
+日か,Ngram_大安売り.txt,48
+木屋,Ngram_青菜.txt,1
+木屋,Ngram_青菜 - コピー.txt,1
+村の,Ngram_うそつき村.txt,16
+村人,Ngram_うそつき村.txt,56
+桶の,Ngram_うそつき村.txt,195
+桶を,Ngram_うそつき村.txt,140
+植木,Ngram_青菜 - コピー.txt,0
+植木,Ngram_青菜.txt,0
+業か,Ngram_大安売り.txt,1
+様に,Ngram_青菜 - コピー.txt,38
+様に,Ngram_青菜.txt,38
+比べ,Ngram_うそつき村.txt,48
+濁り,Ngram_居酒屋.txt,65
+無理,Ngram_居酒屋.txt,79
+牛若,Ngram_青菜.txt,48
+牛若,Ngram_青菜 - コピー.txt,48
+球が,Ngram_うそつき村.txt,131
+理難,Ngram_居酒屋.txt,80
+男に,Ngram_うそつき村.txt,9
+町内,Ngram_大安売り.txt,10
+番公,Ngram_居酒屋.txt,108
+番頭,Ngram_居酒屋.txt,105
+皆う,Ngram_うそつき村.txt,59
+真似,Ngram_青菜 - コピー.txt,102
+真似,Ngram_青菜.txt,102
+砲の,Ngram_うそつき村.txt,19
+突き,Ngram_うそつき村.txt,159
+竹を,Ngram_うそつき村.txt,170
+竹が,Ngram_うそつき村.txt,180
+答え,Ngram_大安売り.txt,44
+経に,Ngram_青菜 - コピー.txt,72
+経」,Ngram_青菜.txt,128
+経」,Ngram_青菜 - コピー.txt,128
+経に,Ngram_青菜.txt,72
+績は,Ngram_大安売り.txt,17
+義経,Ngram_青菜.txt,127
+義経,Ngram_青菜 - コピー.txt,127
+義経,Ngram_青菜.txt,71
+義経,Ngram_青菜 - コピー.txt,71
+聞き,Ngram_青菜 - コピー.txt,86
+聞か,Ngram_青菜.txt,26
+聞い,Ngram_うそつき村.txt,150
+聞く,Ngram_大安売り.txt,26
+聞か,Ngram_青菜 - コピー.txt,26
+聞い,Ngram_大安売り.txt,53
+聞き,Ngram_青菜.txt,86
+股名,Ngram_大安売り.txt,118
+自慢,Ngram_うそつき村.txt,2
+舞に,Ngram_居酒屋.txt,85
+良か,Ngram_大安売り.txt,130
+若丸,Ngram_青菜 - コピー.txt,49
+若丸,Ngram_青菜.txt,49
+菜が,Ngram_青菜.txt,20
+菜が,Ngram_青菜 - コピー.txt,20
+葉を,Ngram_青菜.txt,84
+葉を,Ngram_青菜 - コピー.txt,84
+見た,Ngram_うそつき村.txt,172
+見て,Ngram_うそつき村.txt,142
+言う,Ngram_青菜.txt,40
+言っ,Ngram_青菜.txt,133
+言う,Ngram_青菜 - コピー.txt,40
+言っ,Ngram_青菜 - コピー.txt,133
+言っ,Ngram_大安売り.txt,75
+言葉,Ngram_青菜 - コピー.txt,83
+言葉,Ngram_青菜.txt,83
+負け,Ngram_大安売り.txt,101
+負け,Ngram_大安売り.txt,69
+負け,Ngram_大安売り.txt,33
+負け,Ngram_大安売り.txt,61
+走に,Ngram_青菜 - コピー.txt,15
+走に,Ngram_青菜.txt,15
+足を,Ngram_居酒屋.txt,30
+込む,Ngram_うそつき村.txt,40
+逃げ,Ngram_うそつき村.txt,112
+郎判,Ngram_青菜.txt,124
+郎判,Ngram_青菜 - コピー.txt,63
+郎判,Ngram_青菜 - コピー.txt,124
+郎判,Ngram_青菜.txt,63
+部負,Ngram_大安売り.txt,60
+部言,Ngram_青菜 - コピー.txt,132
+部言,Ngram_青菜.txt,132
+酒を,Ngram_青菜.txt,11
+酒を,Ngram_青菜 - コピー.txt,11
+酒屋,Ngram_居酒屋.txt,1
+酔っ,Ngram_居酒屋.txt,4
+鉄砲,Ngram_うそつき村.txt,18
+鍋に,Ngram_居酒屋.txt,96
+鍋を,Ngram_居酒屋.txt,110
+関取,Ngram_大安売り.txt,7
+隠し,Ngram_青菜.txt,81
+隠し,Ngram_青菜 - コピー.txt,81
+難題,Ngram_居酒屋.txt,81
+雲を,Ngram_うそつき村.txt,157
+鞍馬,Ngram_青菜.txt,44
+鞍馬,Ngram_青菜 - コピー.txt,44
+順に,Ngram_大安売り.txt,51
+頭で,Ngram_居酒屋.txt,106
+題の,Ngram_居酒屋.txt,82
+飲ん,Ngram_居酒屋.txt,19
+馬よ,Ngram_青菜 - コピー.txt,45
+馬よ,Ngram_青菜.txt,45
+馳走,Ngram_青菜.txt,14
+馳走,Ngram_青菜 - コピー.txt,14
+鮟鱇,Ngram_居酒屋.txt,94
+鱇鍋,Ngram_居酒屋.txt,95
