@@ -6,15 +6,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Make_Index {
 
-	public void make_index() {
+	public void make_index(String pass_name) {
 		//ファイル名の一覧を取得する
-		File file = new File("C:\\Eclipse\\pleiades-2019-09-java-win-64bit-jre_20191007\\pleiades\\workspace\\NGRAM_SEARCH\\Ngram");
+		File file = new File(pass_name+"\\NGRAM_SEARCH\\Ngram");
 		File files[] = file.listFiles();
 
 		//[単語] [文章名] [出現位置]で入力
@@ -23,10 +22,9 @@ public class Make_Index {
 		String FN;//ファイル名
 		for(int i=0; i<files.length; i++) {
 			FN = files[i].getName();
-			System.out.println(FN);
 			try {
 				//ファイルを読み込む
-				FileReader fr = new FileReader("C:\\Eclipse\\pleiades-2019-09-java-win-64bit-jre_20191007\\pleiades\\workspace\\NGRAM_SEARCH\\Ngram\\\\" + FN);
+				FileReader fr = new FileReader(pass_name+"\\NGRAM_SEARCH\\Ngram\\" + FN);
 				BufferedReader br = new BufferedReader(fr);
 
 				//読み込んだファイルをFSに入力
@@ -56,42 +54,41 @@ public class Make_Index {
 			//クイックソートを実行
 			WL = quickSort(WL);
 
-			//エラー処理
-			try {
-				FileWriter filewriter = new FileWriter("C:\\Eclipse\\pleiades-2019-09-java-win-64bit-jre_20191007\\pleiades\\workspace\\NGRAM_SEARCH\\\\Inverted_Index.txt");
-				//結果を出力
-				for(int i1=0; i1<WL.size(); i1++) {
-					System.out.print(WL.get(i1));
-					if(i1%3 == 2) {
-						System.out.println();
-					}else {
-						System.out.print(",");
-					}
-					filewriter.write(WL.get(i1));
-					if(i1%3 == 2) {
-						filewriter.write("\n");
-					}else {
-						filewriter.write(",");
-					}
-				}
-				System.out.println("転置インデックスの作成に成功しました。");
-				filewriter.close();
-			}catch(IOException e) {
-				System.out.println(e);
-			}
 		}
+		//エラー処理
+		try {
+			FileWriter filewriter = new FileWriter(pass_name+"\\NGRAM_SEARCH\\Inverted_Index.txt");
+			//結果を出力
+			for(int i1=0; i1<WL.size(); i1++) {
+				System.out.print(WL.get(i1));
+				if(i1%3 == 2) {
+					System.out.println();
+				}else {
+					System.out.print(",");
+				}
+				filewriter.write(WL.get(i1));
+				if(i1%3 == 2) {
+					filewriter.write("\n");
+				}else {
+					filewriter.write(",");
+				}
+			}
+			System.out.println("転置インデックスの作成に成功しました。");
+			filewriter.close();
+		}catch(IOException e) {
+			System.out.println(e);
+		}
+
 	}
 
 	// クイックソートのメソッド（）
 	public static  List<String> quickSort(List<String> WL) {
 		int count = WL.size()/3;//配列の長さは(リストの長さ/要素（今回は３）)
 		//リストを配列にコピー
-		int [] wl_word_num = new int [count];//単語を数値に変換した配列
+		long [] wl_word_num = new long [count];//単語を数値に変換した配列
 		String[] wl_word = new String [count];//単語の配列
 		String[] wl_file = new String [count];//ファイル名
 		String[] wl_number = new String [count];//出現位置
-
-		byte[] bytes;
 
 		String a;
 		for(int i=0; i<count; i++) {
@@ -103,10 +100,15 @@ public class Make_Index {
 
 			a = WL.get(3*i);
 			try {
-				bytes = a.getBytes("UTF-8");
-				System.out.println(bytes);
-				wl_word_num[i] = ByteBuffer.wrap(bytes).getInt();
-				System.out.println(wl_word_num[i]);
+				byte[] bytes;
+
+				//Nグラムの2文字の文字コードをbyte型に変換
+				bytes = a.substring(0,2).getBytes("UTF-8");
+				System.out.println("文字コード；"+bytes[0]+"."+bytes[1]+"."+bytes[2]+"."+bytes[3]+"."+bytes[4]+"."+bytes[5]);
+
+				//long型の変数に収納
+				wl_word_num[i] = (long) (Math.pow(256, 5)*(((long)bytes[0])+128) + Math.pow(256, 4)*(((long)bytes[1])+128) + Math.pow(256, 3)*(((long)bytes[2])+128) + Math.pow(256, 2)*(((long)bytes[3])+128) + 256*(((long)bytes[4])+128) + (((long)bytes[5])+128));
+				System.out.println("ソート対象；"+wl_word_num[i] + "\n");
 				wl_word[i] = a;
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
@@ -130,8 +132,8 @@ public class Make_Index {
 		return WL;
 	}
 
-	private static void quick(int[] input1, String[] input2, String[] input3, String[] input4, int left, int right) {
-		int[] array1 = input1;
+	private static void quick(long[] input1, String[] input2, String[] input3, String[] input4, int left, int right) {
+		long[] array1 = input1;
 		String[] array2 = input2;
 		String[] array3 = input3;
 		String[] array4 = input4;
@@ -142,7 +144,7 @@ public class Make_Index {
 		if (array1.length < 2);
 
 		// 軸はcurrentLeftとcurrentRightの真ん中
-		int pivot = array1[(currentLeft + currentRight) / 2];
+		long pivot = array1[(currentLeft + currentRight) / 2];
 
 		do {
 			while (array1[currentLeft] < pivot) {
@@ -154,7 +156,7 @@ public class Make_Index {
 			if (currentLeft <= currentRight) {
 				int index1 = currentLeft++;
 				int index2 = currentRight--;
-				int temp = array1[index1];
+				long temp = array1[index1];
 				array1[index1] = array1[index2];
 				array1[index2] = temp;
 				String TEMP = array2[index1];
@@ -176,3 +178,7 @@ public class Make_Index {
 			quick(array1, array2, array3, array4, currentLeft, right);
 	}
 }
+
+
+
+
