@@ -14,7 +14,7 @@ public class Make_Index {
 	//インデックスを作成する
 	public void make_index(String pass_name) {
 		//ファイル名の一覧を取得する
-		File file = new File(pass_name+"\\NGRAM_SEARCH\\Ngram");
+		File file = new File(pass_name+"\\Ngram");
 		File files[] = file.listFiles();
 
 		//[単語] [文章名] [出現位置]で入力
@@ -25,7 +25,7 @@ public class Make_Index {
 			FN = files[i].getName();
 			try {
 				//ファイルを読み込む
-				FileReader fr = new FileReader(pass_name+"\\NGRAM_SEARCH\\Ngram\\" + FN);
+				FileReader fr = new FileReader(pass_name+"\\Ngram\\" + FN);
 				BufferedReader br = new BufferedReader(fr);
 
 				//読み込んだファイルをFSに入力
@@ -58,7 +58,7 @@ public class Make_Index {
 		}
 		//エラー処理
 		try {
-			FileWriter filewriter = new FileWriter(pass_name+"\\NGRAM_SEARCH\\Inverted_Index.txt");
+			FileWriter filewriter = new FileWriter(pass_name+"\\Inverted_Index.txt");
 			//結果を出力
 			for(int i1=0; i1<WL.size(); i1++) {
 				System.out.print(WL.get(i1));

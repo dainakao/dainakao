@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Make_Ngram {
 	public void make_ngram(String pass_name) {
 		//ファイル名の一覧を取得する
-		File file = new File(pass_name + "\\NGRAM_SEARCH\\data");
+		File file = new File(pass_name + "\\data");
 		File files[] = file.listFiles();
 
 		String FN;//ファイル名
@@ -20,7 +20,7 @@ public class Make_Ngram {
 			System.out.println(FN);
 			try {
 				//ファイルを読み込む
-				FileReader fr = new FileReader(pass_name + "\\NGRAM_SEARCH\\data\\" + FN);
+				FileReader fr = new FileReader(pass_name + "\\data\\" + FN);
 				BufferedReader br = new BufferedReader(fr);
 
 				//Nグラムを作る
@@ -41,7 +41,7 @@ public class Make_Ngram {
 		int N = 2;
 
 		//ファイルを作成
-		File newfile = new File(pass_name + "\\NGRAM_SEARCH\\Ngram\\\\Ngram_" + file_name);
+		File newfile = new File(pass_name + "\\Ngram\\Ngram_" + file_name);
 
 		//エラー処理
 		try {
@@ -67,7 +67,7 @@ public class Make_Ngram {
 			//finallyで使うのでここで宣言
 			try {
 				//読み込み先を指定
-				File file = new File(pass_name + "\\NGRAM_SEARCH\\\\data\\\\" + file_name);
+				File file = new File(pass_name + "\\data\\" + file_name);
 				BufferedReader br = new BufferedReader(new FileReader(file));
 
 				//文字列型に代入できる

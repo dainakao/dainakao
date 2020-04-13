@@ -10,7 +10,7 @@ public class Main {
 		InputStreamReader isr = new InputStreamReader(System.in);
 		try {
 			String str = "1";
-			String pass_name = new File("..").getCanonicalPath();
+			String pass_name = new File("..").getCanonicalPath() + "\\NGRAM_SEARCH\\";
 			System.out.println(pass_name);
 			while(!(str.equals("0"))) {
 				System.out.println("何をしますか？");
@@ -19,6 +19,7 @@ public class Main {
 				System.out.println("2;Ngramの一覧を表示");
 				System.out.println("3;Ngramを生成");
 				System.out.println("4;インデックスを生成");
+				System.out.println("5;インデックス内を検索");
 				BufferedReader br = new BufferedReader(isr);
 				str  = br.readLine();
 
@@ -26,7 +27,7 @@ public class Main {
 				//ファイルの一覧を表示
 				if(str.equals("1")){
 					//ファイル名の一覧を取得する
-					File file = new File(pass_name + "\\NGRAM_SEARCH\\data");
+					File file = new File(pass_name + "\\data");
 					File files[] = file.listFiles();
 					String FN;//ファイル名
 					for(int i=0; i<files.length; i++) {
@@ -37,7 +38,7 @@ public class Main {
 					//Nグラムの一覧を表示
 				}else if(str.equals("2")) {
 					//ファイル名の一覧を取得する
-					File file = new File(pass_name + "\\NGRAM_SEARCH\\Ngram");
+					File file = new File(pass_name + "\\Ngram");
 					File files[] = file.listFiles();
 					String FN;//ファイル名
 					for(int i=0; i<files.length; i++) {
@@ -54,6 +55,11 @@ public class Main {
 				}else if(str.equals("4")) {
 					Make_Index mi = new Make_Index();
 					mi.make_index(pass_name);
+					
+					//転置インデックス内を検索
+				}else if(str.equals("5")) {
+					Search_Index si = new Search_Index();
+					si.search("Inverted_Index.txt",pass_name);
 
 
 				}else{
