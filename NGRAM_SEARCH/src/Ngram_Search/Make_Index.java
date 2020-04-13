@@ -11,6 +11,7 @@ import java.util.List;
 
 public class Make_Index {
 
+	//インデックスを作成する
 	public void make_index(String pass_name) {
 		//ファイル名の一覧を取得する
 		File file = new File(pass_name+"\\NGRAM_SEARCH\\Ngram");
@@ -178,7 +179,3 @@ public class Make_Index {
 			quick(array1, array2, array3, array4, currentLeft, right);
 	}
 }
-
-
-
-

@@ -36,12 +36,12 @@ public class Make_Ngram {
 			}
 		}
 	}
-	public void make(String a, String b, String pass_name){
+	public void make(String file_name, String b, String pass_name){
 		//Ngramの区切り数
 		int N = 2;
 
 		//ファイルを作成
-		File newfile = new File(pass_name + "\\NGRAM_SEARCH\\Ngram\\\\Ngram_" + a);
+		File newfile = new File(pass_name + "\\NGRAM_SEARCH\\Ngram\\\\Ngram_" + file_name);
 
 		//エラー処理
 		try {
@@ -61,14 +61,13 @@ public class Make_Ngram {
 	}
 
 	//テキストを配列に代入
-	String a;
-	public String Read_String(String a, String pass_name){
+	public String Read_String(String file_name, String pass_name){
 		String b ="";//一時的な変数
 		FileReader fr = null;{
 			//finallyで使うのでここで宣言
 			try {
 				//読み込み先を指定
-				File file = new File(pass_name + "\\NGRAM_SEARCH\\\\data\\\\" + a);
+				File file = new File(pass_name + "\\NGRAM_SEARCH\\\\data\\\\" + file_name);
 				BufferedReader br = new BufferedReader(new FileReader(file));
 
 				//文字列型に代入できる

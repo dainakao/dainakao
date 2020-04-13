@@ -12,7 +12,7 @@ public class Main {
 			String str = "1";
 			String pass_name = new File("..").getCanonicalPath();
 			System.out.println(pass_name);
-			while(!(str.equals("0"))) { 
+			while(!(str.equals("0"))) {
 				System.out.println("何をしますか？");
 				System.out.println("0;終了");
 				System.out.println("1;dataの一覧を表示");
