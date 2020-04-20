@@ -6,42 +6,104 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class Search_Index {
 
-	public void search(String file_name, String pass_name) {
-		String search_word = null;//検索する語句
-		String[] index = null;//転地インデックスをアレイリストで
+	//語句をインデックスから検索
+	public void search(String file_name, String pass_name, String s_w) {
+		String search_word = s_w;//検索する語句
+		ArrayList<String> index = new ArrayList<String>();//転地インデックスをアレイリストで
 
 		//indexに転置インデックスを代入
-		int counter = 0;
 		String a = this.Read_String(file_name, pass_name);//一時的な変数
-		String b = null;//一時的な変数
-		System.out.println(a.substring(0,1));
-		for(int i=0; !(a.substring(i,i+1).equals(null)); i++) {
-			if(a.substring(i,i+1).equals(",")) {
-				index[counter] = b;
-				counter++;
-				b = null;
+		String b = "";//一時的な変数
+
+		for(int i=0; i<a.length(); i++) {
+			if(a.substring(i,i+1).equals(",")||a.substring(i,i+1).equals("\n")) {
+				index.add(new String(b));
+				b = "";
 			}else{
-				b += a.substring(i,i);
+				b += a.substring(i,i+1);
 			}
 		}
-
-		System.out.println("検索する単語を入力してください");
-		search_word = this.keyboard();
-
+		System.out.println(search_word);
 		boolean ans = false;
 		System.out.println("検索結果");
-		for(int i=0; 3*i<index.length; i++) {
-			if(index[3*i].equals(search_word)) {
-				System.out.println(index[(3*i)+1]+","+index[(3*i)+2]);
+		for(int i=0; i<index.size(); i=i+3) {
+			if(index.get(i).equals(search_word)) {
+				System.out.println(index.get((i)+1)+","+index.get((i)+2));
 				ans = true;
 			}
 		}
 		if(ans == false)System.out.println("該当する語句は検出されませんでした");
 		System.out.println();
 	}
+
+
+	//長い語句をインデックスから検索
+	public void long_search(String file_name, String pass_name, String s_w) {
+		String search_word = s_w;//検索する語句
+		String search_words[] = new String[s_w.length()-1];//検索語句
+		ArrayList<String> index = new ArrayList<String>();//転地インデックスをアレイリストで
+
+		//indexに転置インデックスを代入
+		String a = this.Read_String(file_name, pass_name);//一時的な変数
+		String b = "";//一時的な変数
+		for(int i=0; i<a.length(); i++) {
+			if(a.substring(i,i+1).equals(",")||a.substring(i,i+1).equals("\n")) {
+				index.add(new String(b));
+				b = "";
+			}else{
+				b += a.substring(i,i+1);
+			}
+		}
+
+
+		//検索語をNgram状にカット
+		int N = 2;//Ngramの区切り数
+		String n;//一時的にコピーする変数
+		for(int i=0; i<search_word.length()-1; i++) {
+			n = search_word.substring(i,i+N);
+			search_words[i] = n;
+		}
+
+		File file = new File(pass_name + "\\Ngram");
+		File files[] = file.listFiles();//ファイル名リスト
+		boolean[][] answers = new boolean[files.length][search_words.length];
+
+		//検索部位
+		System.out.println("～検索結果～");
+		System.out.println("・完全一致");
+		boolean ans = false;//一時的な変数
+		for(int i=0; i<index.size(); i=i+3) {
+			if(index.get(i).equals(search_words[0])) {
+				ans=true;
+				String str = this.Read_String(index.get((i)+1).substring(6,index.get((i)+1).length()), pass_name+"data\\");//引っかかったファイルをStringに
+					if(Objects.equals(str.substring(Integer.parseInt(index.get((i)+2)),Integer.parseInt(index.get((i)+2))+search_word.length()), search_word)) {
+						System.out.println(index.get((i)+1)+","+index.get((i)+2));
+					}
+			}
+		}
+		if(ans == false)System.out.println("該当無し");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	}
+
 
 	//キーボードの入力をStringに
 	public String keyboard() {
