@@ -52,7 +52,6 @@ public class Make_Ngram {
 			FileWriter filewriter = new FileWriter(newfile);
 			for(int i=0; i<=b.length()-N-1; i++) {
 				n = b.substring(i,i+N);
-				n=F_H(N,n);
 				filewriter.write(n+"\n");
 			}
 			System.out.println("Ngramの作成に成功しました。");
@@ -104,7 +103,7 @@ public class Make_Ngram {
 		return b;
 	}
 
-	//半角数字を全角数字に
+	/*半角数字を全角数字に
 	public String F_H(int N,String str) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(str);
@@ -119,8 +118,8 @@ public class Make_Ngram {
 			if(sb.substring(i,i+1).equals("8"))sb.replace(i, i+1, "８");
 			if(sb.substring(i,i+1).equals("9"))sb.replace(i, i+1, "９");
 			if(sb.substring(i,i+1).equals("0"))sb.replace(i, i+1, "０");
-
 		}
-		return sb.toString();
+		return str;
 	}
+	 */
 }

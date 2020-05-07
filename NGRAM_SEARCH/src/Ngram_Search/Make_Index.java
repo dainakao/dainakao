@@ -94,25 +94,29 @@ public class Make_Index {
 		String a;
 		for(int i=0; i<count; i++) {
 			a = WL.get(3*i+1);
-			wl_file[i] = a;
+			wl_file[i] = a;//ファイル名
 
 			a = WL.get(3*i+2);
-			wl_number[i] = a;
+			wl_number[i] = a;//出現位置
 
 			a = WL.get(3*i);
-			wl_word[i] = a;
+			wl_word[i] = a;//単語の配列
+			
 			try {
 				byte[] bytes;
-
 				//Nグラムの2文字の文字コードをbyte型に変換
 				bytes = a.substring(0,2).getBytes("UTF-8");
-				//System.out.println("文字      ；"+wl_word[i]+"."+wl_file[i]+"."+wl_number[i]);
-				//System.out.println("文字コード；"+bytes[0]+"."+bytes[1]+"."+bytes[2]+"."+bytes[3]+"."+bytes[4]+"."+bytes[5]);
-
-				//long型の変数に収納
-				wl_word_num[i] = (long) (Math.pow(256, 5)*(((long)bytes[0])+128) + Math.pow(256, 4)*(((long)bytes[1])+128) + Math.pow(256, 3)*(((long)bytes[2])+128) + Math.pow(256, 2)*(((long)bytes[3])+128) + 256*(((long)bytes[4])+128) + (((long)bytes[5])+128));
+				//long型の変数に収納・半角のバイト長が足りないものは0を代入
+				byte[] b = new byte[6];
+				for(int j=0; j<b.length; j++) {
+					if(j<bytes.length) {
+						b[j] = bytes[j];
+					}else {
+						b[j] = 0;
+					}	
+				}
+				wl_word_num[i] = (long) (Math.pow(256, 5)*(((long)b[0])+128) + Math.pow(256, 4)*(((long)b[1])+128) + Math.pow(256, 3)*(((long)b[2])+128) + Math.pow(256, 2)*(((long)b[3])+128) + 256*(((long)b[4])+128) + (((long)b[5])+128));
 				//System.out.println("ソート対象；"+wl_word_num[i] + "\n");
-
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
@@ -129,7 +133,6 @@ public class Make_Index {
 				if(j == 2)WL.set(3*i1+2, wl_number[i1]);
 			}
 		}
-
 
 		//ソートしたリストを返す
 		return WL;

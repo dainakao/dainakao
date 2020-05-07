@@ -54,8 +54,8 @@
 、酒Ngram_代り目.txt,116
 、長Ngram_長短.txt,36
 、隠Ngram_松竹梅.txt,185
-、６Ngram_皿屋敷.txt,93
-、９Ngram_皿屋敷.txt,79
+、6Ngram_皿屋敷.txt,93
+、9Ngram_皿屋敷.txt,79
 。「Ngram_大安売り.txt,63,Ngram_転失気.txt,25,Ngram_近日息子.txt,184,Ngram_金明竹.txt,143,Ngram_反対俥.txt,127
 。」Ngram_代り目.txt,231,Ngram_居酒屋.txt,117,Ngram_反対俥.txt,164,Ngram_子ほめ.txt,108,Ngram_子ほめ.txt,130,Ngram_反対俥.txt,143
 。あNgram_反対俥.txt,111,Ngram_長短.txt,31
@@ -90,8 +90,8 @@
 。見Ngram_皿屋敷.txt,105,Ngram_皿屋敷.txt,69
 。通Ngram_代り目.txt,176
 。隠Ngram_松竹梅.txt,53,Ngram_皿屋敷.txt,26
-。３Ngram_松竹梅.txt,21
-。４Ngram_子ほめ.txt,17
+。3Ngram_松竹梅.txt,21
+。4Ngram_子ほめ.txt,17
 々なNgram_金明竹.txt,22
 々のNgram_転失気.txt,171
 「あNgram_代り目.txt,206,Ngram_長短.txt,216,Ngram_長短.txt,162
@@ -192,7 +192,7 @@
 う一Ngram_代り目.txt,50
 う吸Ngram_長短.txt,65
 う見Ngram_子ほめ.txt,123
-う１Ngram_皿屋敷.txt,209
+う1Ngram_皿屋敷.txt,209
 え、Ngram_金明竹.txt,194
 え。Ngram_大安売り.txt,45
 えかNgram_長短.txt,254
@@ -292,7 +292,7 @@
 が隠Ngram_子ほめ.txt,3
 が首Ngram_近日息子.txt,91
 が鮟Ngram_居酒屋.txt,93
-が９Ngram_皿屋敷.txt,230
+が9Ngram_皿屋敷.txt,230
 き、Ngram_青菜 - コピー.txt,87,Ngram_青菜.txt,87,Ngram_長短.txt,35,Ngram_子ほめ.txt,68,Ngram_松竹梅.txt,184
 きかNgram_青菜.txt,23,Ngram_青菜 - コピー.txt,23
 きがNgram_転失気.txt,30
@@ -403,7 +403,7 @@
 せるNgram_代り目.txt,124,Ngram_転失気.txt,100,Ngram_転失気.txt,76,Ngram_長短.txt,79,Ngram_代り目.txt,99
 せんNgram_代り目.txt,214,Ngram_転失気.txt,56
 ぜ」Ngram_代り目.txt,204
-ぜ１Ngram_皿屋敷.txt,249
+ぜ1Ngram_皿屋敷.txt,249
 そうNgram_金明竹.txt,163,Ngram_代り目.txt,171
 そくNgram_青菜.txt,100,Ngram_青菜 - コピー.txt,100,Ngram_うそつき村.txt,45
 そこNgram_金明竹.txt,38,Ngram_反対俥.txt,103,Ngram_代り目.txt,208,Ngram_子ほめ.txt,28,Ngram_子ほめ.txt,30,Ngram_代り目.txt,195,Ngram_うそつき村.txt,117
@@ -763,7 +763,7 @@
 は要Ngram_代り目.txt,131
 は遅Ngram_反対俥.txt,29
 は間Ngram_反対俥.txt,156
-は２Ngram_皿屋敷.txt,270
+は2Ngram_皿屋敷.txt,270
 ばかNgram_子ほめ.txt,100
 ばしNgram_反対俥.txt,65
 ばらNgram_試し酒.txt,53
@@ -913,7 +913,7 @@
 れるNgram_松竹梅.txt,51,Ngram_皿屋敷.txt,103,Ngram_子ほめ.txt,55,Ngram_代り目.txt,45,Ngram_転失気.txt,89
 れをNgram_長短.txt,110,Ngram_試し酒.txt,112,Ngram_うそつき村.txt,148
 れ違Ngram_金明竹.txt,111
-れ６Ngram_皿屋敷.txt,161
+れ6Ngram_皿屋敷.txt,161
 ろ、Ngram_子ほめ.txt,38
 ろ。Ngram_試し酒.txt,109
 ろうNgram_松竹梅.txt,211,Ngram_近日息子.txt,219,Ngram_大安売り.txt,132,Ngram_皿屋敷.txt,175,Ngram_松竹梅.txt,25,Ngram_うそつき村.txt,203
@@ -1513,13 +1513,13 @@
 鍋にNgram_居酒屋.txt,96
 鍋をNgram_居酒屋.txt,110
 長いNgram_長短.txt,3
-長さNgram_長短.txt,37,Ngram_長短.txt,114,Ngram_長短.txt,5
+長さNgram_長短.txt,114,Ngram_長短.txt,5,Ngram_長短.txt,37
 長屋Ngram_松竹梅.txt,3
 長者Ngram_松竹梅.txt,115
 開きNgram_松竹梅.txt,202
 開演Ngram_近日息子.txt,8
 間でNgram_松竹梅.txt,174
-間にNgram_反対俥.txt,157,Ngram_金明竹.txt,59,Ngram_代り目.txt,104,Ngram_反対俥.txt,137
+間にNgram_金明竹.txt,59,Ngram_代り目.txt,104,Ngram_反対俥.txt,157,Ngram_反対俥.txt,137
 間違Ngram_金明竹.txt,41
 関取Ngram_大安売り.txt,7
 阪弁Ngram_金明竹.txt,79
@@ -1559,12 +1559,12 @@
 ﻿酔Ngram_代り目.txt,0
 （蛙Ngram_金明竹.txt,199
 ）でNgram_金明竹.txt,201
-１８Ngram_皿屋敷.txt,250,Ngram_皿屋敷.txt,210
-２日Ngram_皿屋敷.txt,271
-３人Ngram_松竹梅.txt,22
-４５Ngram_子ほめ.txt,18
-５歳Ngram_子ほめ.txt,19
-６枚Ngram_皿屋敷.txt,162,Ngram_皿屋敷.txt,94
-８枚Ngram_皿屋敷.txt,251,Ngram_皿屋敷.txt,211
-９枚Ngram_皿屋敷.txt,80,Ngram_皿屋敷.txt,231
-？」Ngram_転失気.txt,215,Ngram_転失気.txt,200,Ngram_子ほめ.txt,93,Ngram_松竹梅.txt,111
+？」Ngram_子ほめ.txt,93,Ngram_転失気.txt,215,Ngram_松竹梅.txt,111,Ngram_転失気.txt,200
+18Ngram_皿屋敷.txt,250,Ngram_皿屋敷.txt,210
+2日Ngram_皿屋敷.txt,271
+3人Ngram_松竹梅.txt,22
+45Ngram_子ほめ.txt,18
+5歳Ngram_子ほめ.txt,19
+6枚Ngram_皿屋敷.txt,162,Ngram_皿屋敷.txt,94
+8枚Ngram_皿屋敷.txt,211,Ngram_皿屋敷.txt,251
+9枚Ngram_皿屋敷.txt,231,Ngram_皿屋敷.txt,80
