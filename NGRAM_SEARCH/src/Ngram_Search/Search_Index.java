@@ -11,7 +11,7 @@ import java.util.Objects;
 
 public class Search_Index {
 
-	//語句をインデックスから検索
+	//2字語句をインデックスから検索
 	public void search(String file_name, String pass_name, String s_w) {
 		String search_word = s_w;//検索する語句
 		ArrayList<String> index = new ArrayList<String>();//転地インデックスをアレイリストで
@@ -40,7 +40,6 @@ public class Search_Index {
 		if(ans == false)System.out.println("該当する語句は検出されませんでした");
 		System.out.println();
 	}
-
 
 	//長い語句をインデックスから検索
 	public void long_search(String file_name, String pass_name, String s_w) {
@@ -71,7 +70,12 @@ public class Search_Index {
 
 		File file = new File(pass_name + "\\Ngram");
 		File[] files = file.listFiles();//ファイル名リスト
-		boolean[][] answers = new boolean[files.length][search_words.length];
+		boolean[][] answers = new boolean[files.length][search_words.length];//部分検索の合致リスト
+		for(int i=0; i<answers.length; i++) {
+			for(int j=0; j<answers[0].length; j++) {
+				answers[i][j] = false;
+			}
+		}
 
 		//検索部位
 		System.out.println("～検索結果～");
@@ -84,7 +88,7 @@ public class Search_Index {
 				String str = this.Read_String(index.get((i)+1).substring(6,index.get((i)+1).length()), pass_name+"data\\");//引っかかったファイルをStringに
 				if(Objects.equals(str.substring(Integer.parseInt(index.get((i)+2)),Integer.parseInt(index.get((i)+2))+search_word.length()), search_word)) {
 					System.out.println(index.get((i)+1)+","+index.get((i)+2));
-					System.out.println("→" + str.substring(Integer.parseInt(index.get((i)+2))-10,Integer.parseInt(index.get((i)+2))+search_word.length()+10));
+					//System.out.println("→" + str.substring(Integer.parseInt(index.get((i)+2))-10,Integer.parseInt(index.get((i)+2))+search_word.length()+10));
 				}
 				/*
 				//部分検索の第一段階(先頭の2文字)
@@ -99,7 +103,7 @@ public class Search_Index {
 						answers[j][0] = true;
 					}
 				}
-				*/
+				 */
 			}
 		}
 		if(ans == false)System.out.println("該当無し");
@@ -115,19 +119,22 @@ public class Search_Index {
 						stringBuilder.append(index.get((i)+1));
 						String c = files[j].toString();
 						if(c.equals(stringBuilder.toString())) {
-							System.out.println("一致");
 							answers[j][h] = true;
 						}
 					}
 				}
 			}
 		}
+		//部分検索の結果を表示
 		for(int h=0; h<answers.length; h++) {
-			System.out.print(files[h]+";");
 			for(int i=0; i<answers[h].length; i++) {
-				System.out.print(answers[h][i]+",");
+				if(answers[h][i]==true) {
+					System.out.print("〇,");
+				}else {
+					System.out.print("×,");
+				}
 			}
-			System.out.println();
+			System.out.println(";"+files[h]);
 		}
 	}
 

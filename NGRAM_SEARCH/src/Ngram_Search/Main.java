@@ -68,6 +68,18 @@ public class Main {
 					System.out.println("検索する単語(2文字以上)を入力してください");
 					Search_Index si = new Search_Index();
 					si.long_search("Inverted_Index.txt",pass_name,si.keyboard());
+					
+					
+					
+					//転置インデックスを作成
+				}else if(str.equals("7")) {
+					Make_Index mi = new Make_Index();
+					mi.aaa(pass_name);
+					
+					
+					
+					
+					
 
 				}else{
 					System.out.println(str + "は無効な入力です");
