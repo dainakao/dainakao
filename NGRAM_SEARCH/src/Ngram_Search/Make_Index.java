@@ -60,15 +60,15 @@ public class Make_Index {
 		try {
 			FileWriter filewriter = new FileWriter(pass_name+"\\Inverted_Index.txt");
 			//結果を出力
-			for(int i1=0; i1<WL.size(); i1++) {
-				System.out.print(WL.get(i1));
-				if(i1%3 == 2) {
+			for(int i=0; i<WL.size(); i++) {
+				System.out.print(WL.get(i));
+				if(i%3 == 2) {
 					System.out.println();
 				}else {
 					System.out.print(",");
 				}
-				filewriter.write(WL.get(i1));
-				if(i1%3 == 2) {
+					filewriter.write(WL.get(i));
+				if(i%3 == 2) {
 					filewriter.write("\n");
 				}else {
 					filewriter.write(",");
@@ -101,7 +101,7 @@ public class Make_Index {
 
 			a = WL.get(3*i);
 			wl_word[i] = a;//単語の配列
-			
+
 			try {
 				byte[] bytes;
 				//Nグラムの2文字の文字コードをbyte型に変換
@@ -113,7 +113,7 @@ public class Make_Index {
 						b[j] = bytes[j];
 					}else {
 						b[j] = 0;
-					}	
+					}
 				}
 				wl_word_num[i] = (long) (Math.pow(256, 5)*(((long)b[0])+128) + Math.pow(256, 4)*(((long)b[1])+128) + Math.pow(256, 3)*(((long)b[2])+128) + Math.pow(256, 2)*(((long)b[3])+128) + 256*(((long)b[4])+128) + (((long)b[5])+128));
 				//System.out.println("ソート対象；"+wl_word_num[i] + "\n");
@@ -212,7 +212,7 @@ public class Make_Index {
 				while ((line = br.readLine()) != null) {
 					//読み込んだbufをFNに代入
 					WL.add(line + "");
-					WL.add(FN + "");
+					WL.add(i + "");
 					WL.add(number + "");
 					number++;
 				}
@@ -233,7 +233,7 @@ public class Make_Index {
 		}
 		//エラー処理
 		try {
-			FileWriter filewriter = new FileWriter(pass_name+"\\Inverted_Index.txt");
+			FileWriter filewriter = new FileWriter(pass_name+"\\Inverted_Index.csv");
 			//結果をまとめて、出力
 			String str;
 			int i=0;
@@ -245,7 +245,7 @@ public class Make_Index {
 					System.out.print(",");
 					filewriter.write(",");
 					i++;
-					System.out.print(WL.get(i));//ファイル名を出力
+					System.out.print(files[Integer.parseInt(WL.get(i))].getName());//ファイル名を出力
 					filewriter.write(WL.get(i));//ファイル名を出力
 					System.out.print(",");
 					filewriter.write(",");
@@ -259,12 +259,14 @@ public class Make_Index {
 						filewriter.write("\n");
 						System.out.print(WL.get(i));//文書を出力
 						filewriter.write(WL.get(i));//文書を出力
+						System.out.print(",");
+						filewriter.write(",");
 					}else {//同じ単語なら後ろに追加
 						System.out.print(",");
 						filewriter.write(",");
 					}
 					i++;
-					System.out.print(WL.get(i));//ファイル名を出力
+					System.out.print(files[Integer.parseInt(WL.get(i))].getName());//ファイル名を出力
 					filewriter.write(WL.get(i));//ファイル名を出力
 					System.out.print(",");
 					filewriter.write(",");

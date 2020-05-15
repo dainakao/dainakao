@@ -46,13 +46,12 @@ public class Make_Ngram {
 
 		//エラー処理
 		try {
-
 			//Ngramを入力
 			String n;//一時的にコピーする変数
 			FileWriter filewriter = new FileWriter(newfile);
 			for(int i=0; i<=b.length()-N-1; i++) {
 				n = b.substring(i,i+N);
-				filewriter.write(n+"\n");
+					filewriter.write(n+"\n");
 			}
 			System.out.println("Ngramの作成に成功しました。");
 			filewriter.close();
@@ -102,24 +101,4 @@ public class Make_Ngram {
 		}
 		return b;
 	}
-
-	/*半角数字を全角数字に
-	public String F_H(int N,String str) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(str);
-		for(int i=0; i<N; i++) {
-			if(sb.substring(i,i+1).equals("1"))sb.replace(i, i+1, "１");
-			if(sb.substring(i,i+1).equals("2"))sb.replace(i, i+1, "２");
-			if(sb.substring(i,i+1).equals("3"))sb.replace(i, i+1, "３");
-			if(sb.substring(i,i+1).equals("4"))sb.replace(i, i+1, "４");
-			if(sb.substring(i,i+1).equals("5"))sb.replace(i, i+1, "５");
-			if(sb.substring(i,i+1).equals("6"))sb.replace(i, i+1, "６");
-			if(sb.substring(i,i+1).equals("7"))sb.replace(i, i+1, "７");
-			if(sb.substring(i,i+1).equals("8"))sb.replace(i, i+1, "８");
-			if(sb.substring(i,i+1).equals("9"))sb.replace(i, i+1, "９");
-			if(sb.substring(i,i+1).equals("0"))sb.replace(i, i+1, "０");
-		}
-		return str;
-	}
-	 */
 }
