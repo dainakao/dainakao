@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Make_Index {
 
-	//インデックスを作成する
+	//旧・インデックスを作成
 	public void make_index(String pass_name) {
 		//ファイル名の一覧を取得する
 		File file = new File(pass_name+"\\Ngram");
@@ -67,13 +67,112 @@ public class Make_Index {
 				}else {
 					System.out.print(",");
 				}
-					filewriter.write(WL.get(i));
+				filewriter.write(WL.get(i));
 				if(i%3 == 2) {
 					filewriter.write("\n");
 				}else {
 					filewriter.write(",");
 				}
 			}
+			System.out.println("転置インデックスの作成に成功しました。");
+			filewriter.close();
+		}catch(IOException e) {
+			System.out.println(e);
+		}
+
+	}
+
+	//新・インデックスを作成
+	public void aaa(String pass_name) {
+		//ファイル名の一覧を取得する
+		File file = new File(pass_name+"\\Ngram");
+		File files[] = file.listFiles();
+
+		//[単語] [文章名] [出現位置]で入力
+		List<String> WL = new ArrayList<String>();
+
+		String FN;//ファイル名
+		for(int i=0; i<files.length; i++) {
+			FN = files[i].getName();
+			try {
+				//ファイルを読み込む
+				FileReader fr = new FileReader(pass_name+"\\Ngram\\" + FN);
+				BufferedReader br = new BufferedReader(fr);
+
+				//読み込んだファイルをFSに入力
+				String line;
+
+				int number=0;//出現位置をカウント
+				//Ngram_から始まる文章のみをリストに加える
+				if(FN.substring(0,6).equals("Ngram_")) {;
+				while ((line = br.readLine()) != null) {
+					//読み込んだbufをFNに代入
+					WL.add(line + "");
+					WL.add(i + "");
+					WL.add(number + "");
+					number++;
+				}
+				}
+
+				//終了処理
+				br.close();
+				fr.close();
+
+			} catch (IOException ex) {
+				//例外発生時処理
+				ex.printStackTrace();
+			}
+
+			//クイックソートを実行
+			WL = quickSort(WL);
+
+		}
+		//エラー処理
+		try {
+			FileWriter filewriter = new FileWriter(pass_name+"\\Inverted_Index.csv");
+			//結果をまとめて、出力
+			String str;
+			int i=0;
+			while(i<WL.size()) {
+				str = WL.get(i);
+				if(i==0) {
+					System.out.print(WL.get(i));//文書を出力
+					filewriter.write(WL.get(i));//文書を出力
+					System.out.print(",");
+					filewriter.write(",");
+					i++;
+					System.out.print(files[Integer.parseInt(WL.get(i))].getName());//ファイル名を出力
+					filewriter.write(WL.get(i));//ファイル名を出力
+					System.out.print(",");
+					filewriter.write(",");
+					i++;
+					System.out.print(WL.get(i));//番号を出力
+					filewriter.write(WL.get(i));//番号を出力
+					i++;
+				}else {
+					if(!str.equals(WL.get(i-3))) {//違う単語なら改行
+						System.out.println();
+						filewriter.write("\n");
+						System.out.print(WL.get(i));//文書を出力
+						filewriter.write(WL.get(i));//文書を出力
+						System.out.print(",");
+						filewriter.write(",");
+					}else {//同じ単語なら後ろに追加
+						System.out.print(",");
+						filewriter.write(",");
+					}
+					i++;
+					System.out.print(files[Integer.parseInt(WL.get(i))].getName());//ファイル名を出力
+					filewriter.write(WL.get(i));//ファイル名を出力
+					System.out.print(",");
+					filewriter.write(",");
+					i++;
+					System.out.print(WL.get(i));//番号を出力
+					filewriter.write(WL.get(i));//番号を出力
+					i++;
+				}
+			}
+			System.out.println();
 			System.out.println("転置インデックスの作成に成功しました。");
 			filewriter.close();
 		}catch(IOException e) {
@@ -184,104 +283,4 @@ public class Make_Index {
 			quick(array1, array2, array3, array4, currentLeft, right);
 	}
 
-
-
-	//インデックスをまとめる
-	public void aaa(String pass_name) {
-		//ファイル名の一覧を取得する
-		File file = new File(pass_name+"\\Ngram");
-		File files[] = file.listFiles();
-
-		//[単語] [文章名] [出現位置]で入力
-		List<String> WL = new ArrayList<String>();
-
-		String FN;//ファイル名
-		for(int i=0; i<files.length; i++) {
-			FN = files[i].getName();
-			try {
-				//ファイルを読み込む
-				FileReader fr = new FileReader(pass_name+"\\Ngram\\" + FN);
-				BufferedReader br = new BufferedReader(fr);
-
-				//読み込んだファイルをFSに入力
-				String line;
-
-				int number=0;//出現位置をカウント
-				//Ngram_から始まる文章のみをリストに加える
-				if(FN.substring(0,6).equals("Ngram_")) {;
-				while ((line = br.readLine()) != null) {
-					//読み込んだbufをFNに代入
-					WL.add(line + "");
-					WL.add(i + "");
-					WL.add(number + "");
-					number++;
-				}
-				}
-
-				//終了処理
-				br.close();
-				fr.close();
-
-			} catch (IOException ex) {
-				//例外発生時処理
-				ex.printStackTrace();
-			}
-
-			//クイックソートを実行
-			WL = quickSort(WL);
-
-		}
-		//エラー処理
-		try {
-			FileWriter filewriter = new FileWriter(pass_name+"\\Inverted_Index.csv");
-			//結果をまとめて、出力
-			String str;
-			int i=0;
-			while(i<WL.size()) {
-				str = WL.get(i);
-				if(i==0) {
-					System.out.print(WL.get(i));//文書を出力
-					filewriter.write(WL.get(i));//文書を出力
-					System.out.print(",");
-					filewriter.write(",");
-					i++;
-					System.out.print(files[Integer.parseInt(WL.get(i))].getName());//ファイル名を出力
-					filewriter.write(WL.get(i));//ファイル名を出力
-					System.out.print(",");
-					filewriter.write(",");
-					i++;
-					System.out.print(WL.get(i));//番号を出力
-					filewriter.write(WL.get(i));//番号を出力
-					i++;
-				}else {
-					if(!str.equals(WL.get(i-3))) {//違う単語なら改行
-						System.out.println();
-						filewriter.write("\n");
-						System.out.print(WL.get(i));//文書を出力
-						filewriter.write(WL.get(i));//文書を出力
-						System.out.print(",");
-						filewriter.write(",");
-					}else {//同じ単語なら後ろに追加
-						System.out.print(",");
-						filewriter.write(",");
-					}
-					i++;
-					System.out.print(files[Integer.parseInt(WL.get(i))].getName());//ファイル名を出力
-					filewriter.write(WL.get(i));//ファイル名を出力
-					System.out.print(",");
-					filewriter.write(",");
-					i++;
-					System.out.print(WL.get(i));//番号を出力
-					filewriter.write(WL.get(i));//番号を出力
-					i++;
-				}
-			}
-			System.out.println();
-			System.out.println("転置インデックスの作成に成功しました。");
-			filewriter.close();
-		}catch(IOException e) {
-			System.out.println(e);
-		}
-
-	}
 }
