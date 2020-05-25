@@ -6,63 +6,173 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Functions {
-	public void TF_IDF(String file_name, String pass_name){	
+	//TF_IDF[Nグラム][文書ID]
+	public void TF_IDF(String file_name, String pass_name){
 		int d;//文書dj内の単語tiの出現回数
 		int[] now = Number_of_words(pass_name);//文書djのすべての単語の出現回数の和
 		int N = count_file(pass_name);//総文書数
 		int df;//単語tiが出現する文書数+1
-		String[] str = Read_Strings(file_name, pass_name);
-		double [][] TF_IDF = new double [now.length][count_word(file_name, pass_name)];//TF＿IDF値を入れる型
+		ArrayList<ArrayList<String>> ind = R_S(file_name, pass_name);
+		double [][] TF_IDF = new double [count_word(file_name, pass_name)][now.length];//TF＿IDF値を入れる型
+		//ID=Nグラムの番号
+		for(int ID=0; ID<TF_IDF.length; ID++) {
+			for(int i=0; i<TF_IDF[0].length;i++) {
+				TF_IDF[ID][i] = 0.0;
 
-		int i = 1;//インデックス番号
-		int I = i;
-		int ID = 0;
-		while(i<str.length) {
-
-
-			int s=i;//検索する単語ID
-			while(!str[s].equals("\n")) {
-				i=I;
+				//dfを求める・dを求める
 				d=0;
-				while(!str[i].equals("\n")) {
-
-					if(Integer.parseInt(str[i]) == Integer.parseInt(str[s])) {
-						d++;
+				df=1;
+				ArrayList<Integer> DF = new ArrayList<Integer>();
+				for(int j=1; j<ind.get(ID).size();j=j+2) {
+					if(i==Integer.parseInt(ind.get(ID).get(j))) d++;
+					DF.add(Integer.parseInt(ind.get(ID).get(j)));
+				}
+				Collections.sort(DF);
+				int a=DF.get(0);//一時的な変数
+				for(int j=0; j<DF.size();j++) {
+					if(a!=DF.get(j)) {
+						df++;
+						a=DF.get(j);
 					}
-					i=i+2;
 				}
-				//dfを求める
-				df=0;
-				for(int j=0; j<TF_IDF.length; j++) {
-					if(TF_IDF[j][ID] != 0)df++;
-				}
-				df++;//dfは単語tiが出現する文書数に+1しておく
-				double TF = (double)d/(double)now[Integer.parseInt(str[s])];
+
+				double TF = (double)d/(double)now[i];
 				double IDF = Math.log((double)N/(double)df);
-				TF_IDF[Integer.parseInt(str[s])][ID] = TF*IDF;
-				s= s+2;	
+				TF_IDF[ID][i] = TF*IDF;
 			}
-			ID++;
-			i=i+2;
-			I = i;//先頭のインデックスを一時記憶
 		}
 		try {
 			FileWriter filewriter = new FileWriter(pass_name+"\\tf_idf.csv");
-		for(int j=0; j<TF_IDF.length; j++) {
-			for(int h=0; h<TF_IDF[0].length; h++) {
-				System.out.print(TF_IDF[j][h]+",");
-				filewriter.write(TF_IDF[j][h]+",");
+			for(int j=0; j<TF_IDF.length; j++) {
+				for(int h=0; h<TF_IDF[j].length; h++) {
+					filewriter.write(String.valueOf(TF_IDF[j][h]));
+					if(h!=TF_IDF[0].length-1)filewriter.write(",");
+				}
+				filewriter.write("\n");
+				filewriter.flush();
 			}
-			System.out.println();
-			filewriter.write("\n");
-		}
 		}catch(IOException e) {
 			System.out.println(e);
 		}
+	}
+
+	//検索→TF_IDFを用いて順位付け
+	//2字語句を新インデックスから検索
+	public void search_TF_IDF(String file_name, String pass_name, String s_w) {
+		String search_word = s_w;//検索する語句
+		System.out.println(search_word);
+		ArrayList<ArrayList<String>> indexs = new ArrayList<ArrayList<String>>();//転地インデックスをアレイリストで
+		double[][] data = null;//0;TF_IDF値 1;ファイルの番号 2;出現位置
+
+		//indexに転置インデックスを代入
+		String a[] = this.Read_Strings(file_name, pass_name);//一時的な変数
+		ArrayList<String> index = new ArrayList<String>();//転地インデックス
+		for(int i=0; i<a.length; i++) {
+			if(a[i].equals(",")) {
+			}else if(a[i].equals("\n")){
+				indexs.add(index);
+				index = new ArrayList<String>();//転地インデックス
+			}else {
+				index.add(a[i]);
+			}
+		}
+
+		//ファイルからtf_idfに代入
+		ArrayList<ArrayList<String>> tf_idf = this.R_S("tf_idf.csv", pass_name);//一時的な変数
+		//double[][]  = new double[count_file(pass_name)][indexs.size()];
+		int h=0;
+		for(int i=0; i<tf_idf.size(); i++) {
+			for(int j=0; j<tf_idf.get(i).size(); j++){
+				//System.out.println(i+", "+j+", "+tf_idf.get(i).get(j));
+			}
+		}
+
+		File file = new File(pass_name + "\\data");
+		File files[] = file.listFiles();
+
+		boolean ans = false;
+		System.out.println("検索結果");
+		for(int i=0; i<indexs.size(); i++) {
+			if(indexs.get(i).get(0).equals(search_word)) {
+				data = new double[(indexs.get(i).size()-1)/2][3];
+				//0;TF_IDF値 1;ファイルの番号 2;出現位置
+				for(int j=1; j<indexs.get(i).size(); j++) {
+					if(j%2 == 1) {
+						//System.out.print(tf_idf[Integer.parseInt(indexs.get(i).get(j))][i] +",");//tf_idfの値を出力
+						//System.out.print(files[Integer.parseInt(indexs.get(i).get(j))].getName() +",");//ファイル番号を名前に変えて出力
+						data[(j-1)/2][0] = Double.parseDouble(tf_idf.get(i).get(Integer.parseInt(indexs.get(i).get(j))));
+						data[(j-1)/2][1] = Integer.parseInt(indexs.get(i).get(j));
+					}else {
+						//System.out.println(indexs.get(i).get(j));//出現位置を出力
+						data[(j-1)/2][2] = Integer.parseInt(indexs.get(i).get(j));
+					}
+				}
+				ans = true;
+				break;
+			}
+		}
+		//検出された際の重みづけ
+		if(ans == true) {
+			//quick(data[0], data[1], data[2], 0, data[0].length);
+			for(int i=0; i<data.length; i++) {
+				for(int j=0; j<data[0].length; j++) {
+					System.out.print(data[i][j]+", ");
+				}
+				System.out.println();
+			}
+		}else{
+			System.out.println("該当する語句は検出されませんでした");
+		}
+		System.out.println();
+	}
+
+	//クイックソート
+	private static void quick(double[] input1, double[] input2, double[] input3, int left, int right) {
+		double[] array1 = input1;
+		double[] array2 = input2;
+		double[] array3 = input3;
+		int currentLeft = left;
+		int currentRight = right;
+
+		// 要素数が1以下のときは、何もせず返却する
+		if (array1.length < 2);
+
+		// 軸はcurrentLeftとcurrentRightの真ん中
+		double pivot = array1[(currentLeft + currentRight) / 2];
+
+		do {
+			while (array1[currentLeft] < pivot) {
+				currentLeft++;
+			}
+			while (array1[currentRight] > pivot) {
+				currentRight--;
+			}
+			if (currentLeft <= currentRight) {
+				int index1 = currentLeft++;
+				int index2 = currentRight--;
+				double temp = array1[index1];
+				array1[index1] = array1[index2];
+				array1[index2] = temp;
+				double TEMP = array2[index1];
+				array2[index1] = array2[index2];
+				array2[index2] = TEMP;
+				TEMP = array3[index1];
+				array3[index1] = array3[index2];
+				array3[index2] = TEMP;
+			}
+		} while (currentLeft <= currentRight);
+
+		if (left < currentRight)
+			quick(array1, array2, array3, left, currentRight);
+
+		if (currentLeft < right)
+			quick(array1, array2, array3, currentLeft, right);
 	}
 
 	//テキストを配列に代入、String[]で返却(改行は\nで格納)
@@ -118,6 +228,33 @@ public class Functions {
 		}
 		return str;
 	}
+
+	public ArrayList R_S(String file_name, String pass_name){
+		ArrayList<ArrayList<String>> datas = new ArrayList<ArrayList<String>>();
+		try {
+			File f = new File(file_name);
+			BufferedReader br = new BufferedReader(new FileReader(f));
+
+			String line = br.readLine();
+			for (int row = 0; line != null; row++) {
+				ArrayList<String> data = new ArrayList<String>();
+				String[] a = line.split(",", 0);
+				for(int i=0; i<a.length; i++)data.add(a[i]);
+				datas.add(data);
+				line = br.readLine();
+			}
+			br.close();
+			// CSVから読み込んだ配列の中身を表示
+			for(int row = 0; row < datas.size(); row++) {
+				for(int col = 0; col < datas.get(row).size(); col++) {
+				}
+			}
+		} catch (IOException e) {
+			System.out.println(e);
+		}
+		return datas;
+	}
+
 
 	//テキストファイルごとのNグラムの数をint配列で返却
 	public int[] Number_of_words(String pass_name) {
@@ -212,5 +349,18 @@ public class Functions {
 		File files[] = file.listFiles();
 		//返却するテキストファイルごとの単語数
 		return files.length;
+	}
+
+	//キーボードの入力をStringに
+	public String keyboard() {
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+		String str = null;
+		try {
+			str  = br.readLine();
+		}catch(IOException e) {
+			System.out.println("*入出力エラー*");
+		}
+		return str;
 	}
 }

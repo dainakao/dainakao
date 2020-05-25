@@ -22,8 +22,9 @@ public class Main {
 				System.out.println("5;新インデックスを生成");
 				System.out.println("6;インデックス内を検索(2文字)");
 				System.out.println("7;インデックス内を検索(2文字以上)");
-				
-				System.out.println("8;TF_IDF");
+
+				System.out.println("8;TF_IDFを生成");
+				System.out.println("9;TF_IDFを用いて重みづけ");
 				BufferedReader br = new BufferedReader(isr);
 				str  = br.readLine();
 
@@ -59,7 +60,7 @@ public class Main {
 				}else if(str.equals("4")) {
 					Make_Index mi = new Make_Index();
 					mi.make_index(pass_name);
-					
+
 					//新・転置インデックスを作成
 				}else if(str.equals("5")) {
 					Make_Index mi = new Make_Index();
@@ -78,12 +79,17 @@ public class Main {
 					si.long_search_aaa("Inverted_Index.csv",pass_name,si.keyboard());
 
 
-					
-					//TF_IDF
+
+					//TF_IDFを生成
 				}else if(str.equals("8")) {
 					Functions f = new Functions();
 					f.TF_IDF("Inverted_Index.csv", pass_name);
 
+					//TF_IDFを用いて重みづけ
+				}else if(str.equals("9")) {
+					Functions f = new Functions();
+					System.out.println("検索する単語(2文字)を入力してください");
+					f.search_TF_IDF("Inverted_Index.csv", pass_name, f.keyboard());
 
 
 

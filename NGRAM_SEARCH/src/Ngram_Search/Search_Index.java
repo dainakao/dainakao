@@ -39,13 +39,12 @@ public class Search_Index {
 		System.out.println("検索結果");
 		for(int i=0; i<indexs.size(); i++) {
 			if(indexs.get(i).get(0).equals(search_word)) {
-				for(int j=0; j<indexs.get(i).size(); j++) {
+				for(int j=1; j<indexs.get(i).size(); j++) {
 					if(j%2 == 1) {
-						System.out.print(files[Integer.parseInt(indexs.get(i).get(j))].getName());
+						System.out.print(files[Integer.parseInt(indexs.get(i).get(j))].getName() + ",");
 					}else {
-						System.out.print(indexs.get(i).get(j));
+						System.out.println(indexs.get(i).get(j));
 					}
-					if(j!=indexs.get(i).size()-1)System.out.print(",");
 				}
 				ans = true;
 				break;
