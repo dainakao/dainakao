@@ -63,8 +63,9 @@ public class Make_morphorogical {
 		try {
 			//morphorogicalを入力
 			FileWriter filewriter = new FileWriter(newfile);
-			for(int i=0; i<=morphorogical.size()-1; i++) {
-					filewriter.write(morphorogical.get(i)+"\n");
+			for(int i=0; i<=morphorogical.size()-2; i++) {
+					filewriter.write(morphorogical.get(i));
+					if(i<=morphorogical.size()-3)filewriter.write("\n");
 			}
 			System.out.println("morphorogicalの作成に成功しました。");
 			filewriter.close();

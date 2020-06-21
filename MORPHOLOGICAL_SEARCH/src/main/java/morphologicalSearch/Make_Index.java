@@ -10,73 +10,52 @@ import java.util.List;
 
 public class Make_Index {
 
-	//旧・インデックスを作成
-	public void make_index(String pass_name) {
+	//文書から空白を取り除く
+	public void prepare_sentences(String pass_name) {
 		//ファイル名の一覧を取得する
-		File file = new File(pass_name+"\\morphorogical");
+		File file = new File(pass_name+"\\data");
 		File files[] = file.listFiles();
-
-		//[単語] [文章名] [出現位置]で入力
-		List<String> WL = new ArrayList<String>();
 
 		String FN;//ファイル名
 		for(int i=0; i<files.length; i++) {
 			FN = files[i].getName();
 			try {
 				//ファイルを読み込む
-				FileReader fr = new FileReader(pass_name+"\\morphorogical\\" + FN);
+				FileReader fr = new FileReader(pass_name+"\\unorganized_data\\" + FN);
 				BufferedReader br = new BufferedReader(fr);
 
 				//読み込んだファイルをFSに入力
-				String line;
-
-				int number=0;//出現位置をカウント
-				//morphorogical_から始まる文章のみをリストに加える
-				if(FN.substring(0,6).equals("morphorogical_")) {;
-				while ((line = br.readLine()) != null) {
-					//読み込んだbufをFNに代入
-					WL.add(line + "");
-					WL.add(FN + "");
-					WL.add(number + "");
-					number++;
-				}
-				}
+				String line = br.readLine();
 
 				//終了処理
 				br.close();
 				fr.close();
 
-			} catch (IOException ex) {
-				//例外発生時処理
-				ex.printStackTrace();
-			}
+				FileWriter filewriter = new FileWriter(pass_name+"\\data\\" + FN);
+				//結果を出力
+				String str=null;
+				int leng = line.length();
+				for(int j=0; j<leng; j++) {
+					str = line.substring(j,j+1);
+					if(str.equals(" ")||str.equals("　")) {
+						System.out.print("␣");
+						filewriter.write("␣");
+					}else if(str.equals("[")) {
+						if(line.substring(j+2,j+3).equals("]")||line.substring(j+3,j+4).equals("]")) {
+							j++;
+							j++;
+						}
+					}else {
+						System.out.print(str);
+						filewriter.write(str);
+					}
 
-			//クイックソートを実行
-			WL = quickSort(WL);
-
-		}
-		//エラー処理
-		try {
-			FileWriter filewriter = new FileWriter(pass_name+"\\Inverted_Index.txt");
-			//結果を出力
-			for(int i=0; i<WL.size(); i++) {
-				System.out.print(WL.get(i));
-				if(i%3 == 2) {
-					System.out.println();
-				}else {
-					System.out.print(",");
 				}
-				filewriter.write(WL.get(i));
-				if(i%3 == 2) {
-					filewriter.write("\n");
-				}else {
-					filewriter.write(",");
-				}
+				System.out.println("文書から空白を取り除きました");
+				filewriter.close();
+			}catch(IOException e) {
+				System.out.println(e);
 			}
-			System.out.println("転置インデックスの作成に成功しました。");
-			filewriter.close();
-		}catch(IOException e) {
-			System.out.println(e);
 		}
 
 	}

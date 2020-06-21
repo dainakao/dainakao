@@ -32,6 +32,7 @@ public class TF_IDF {
 				df=1;
 				ArrayList<Integer> DF = new ArrayList<Integer>();
 				for(int j=1; j<ind.get(ID).size();j=j+2) {
+					//System.out.println(i+", "+ind.get(ID).get(j));
 					if(i==Integer.parseInt(ind.get(ID).get(j))) d++;
 					DF.add(Integer.parseInt(ind.get(ID).get(j)));
 				}
@@ -50,7 +51,8 @@ public class TF_IDF {
 			}
 		}
 		try {
-			FileWriter filewriter = new FileWriter(pass_name+"\\tf_idf.csv");
+			File newfile = new File(pass_name+"\\tf_idf.csv");
+			FileWriter filewriter = new FileWriter(newfile);
 			for(int j=0; j<TF_IDF.length; j++) {
 				for(int h=0; h<TF_IDF[j].length; h++) {
 					filewriter.write(String.valueOf(TF_IDF[j][h]));
@@ -59,6 +61,7 @@ public class TF_IDF {
 				filewriter.write("\n");
 				filewriter.flush();
 			}
+			filewriter.close();
 			System.out.println("TF_IDFを作成しました");
 		}catch(IOException e) {
 			System.out.println(e);
