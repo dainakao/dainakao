@@ -97,6 +97,8 @@ public class Main {
 					System.out.println("2;morphorogicalの一覧を表示");
 					System.out.println("3;インデックス内を検索");
 					System.out.println("4;TF_IDFを用いて重みづけ");
+					System.out.println("5;TF_IDFを用いて複数語句を重みづけ(足し算)");
+					System.out.println("6;TF_IDFを用いて複数語句を重みづけ(掛け算)");
 					br = new BufferedReader(isr);
 					str  = br.readLine();
 
@@ -134,6 +136,16 @@ public class Main {
 					}else if(str.equals("4")) {
 						System.out.println("検索する単語を入力してください");
 						tf.search_TF_IDF("Inverted_Index.csv", pass_name, f.keyboard());
+						
+						//TF_IDFを用いて複数語句を重みづけ(足し算)
+					}else if(str.equals("5")) {
+						System.out.println("検索する単語を入力してください");
+						tf.add_long_search_TF_IDF("Inverted_Index.csv", pass_name, f.keyboard());
+
+						//TF_IDFを用いて複数語句を重みづけ(掛け算)
+					}else if(str.equals("6")) {
+						System.out.println("検索する単語を入力してください");
+						tf.mul_long_search_TF_IDF("Inverted_Index.csv", pass_name, f.keyboard());
 
 					}else{
 						System.out.println(str + "は無効な入力です");

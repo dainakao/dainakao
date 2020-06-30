@@ -4,11 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Functions {
@@ -154,14 +152,14 @@ public class Functions {
 		return str;
 	}
 
-	public ArrayList R_S(String file_name, String pass_name){
+	public ArrayList<ArrayList<String>> R_S(String file_name, String pass_name){
 		ArrayList<ArrayList<String>> datas = new ArrayList<ArrayList<String>>();
 		try {
 			File f = new File(file_name);
 			BufferedReader br = new BufferedReader(new FileReader(f));
 
 			String line = br.readLine();
-			for (int row = 0; line != null; row++) {
+			for (; line != null;) {
 				ArrayList<String> data = new ArrayList<String>();
 				String[] a = line.split(",", 0);
 				for(int i=0; i<a.length; i++)data.add(a[i]);

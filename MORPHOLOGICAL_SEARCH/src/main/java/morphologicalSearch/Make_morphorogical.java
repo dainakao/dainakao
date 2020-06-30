@@ -50,7 +50,7 @@ public class Make_morphorogical {
         Tokenizer normal = builder.build();
         List<Token> tokens = normal.tokenize(parseWord);
 		
-        ArrayList<String> morphorogical = new ArrayList();
+        ArrayList<String> morphorogical = new ArrayList<String>();
         for (Token token : tokens) {
         	morphorogical.add(token.getSurfaceForm());
         }
