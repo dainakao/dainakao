@@ -68,7 +68,7 @@ public class Main {
 
 						//morphorogicalを作成
 					}else if(str.equals("4")){
-						mn.make_morphorogical(pass_name);
+						mn.make_morphorogical_2(pass_name);
 
 						//新・転置インデックスを作成
 					}else if(str.equals("5")) {
@@ -81,7 +81,7 @@ public class Main {
 						//すべてを実行
 					}else if(str.equals("10")) {
 						mi.prepare_sentences(pass_name);
-						mn.make_morphorogical(pass_name);
+						mn.make_morphorogical_2(pass_name);
 						mi.aaa(pass_name);
 						tf.make_TF_IDF("Inverted_Index.csv", pass_name);
 
