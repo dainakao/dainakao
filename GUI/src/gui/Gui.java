@@ -20,7 +20,7 @@ import javax.swing.JRadioButton;
 public class Gui extends JFrame {
 	private static final long serialVersionUID = 1L;
 	// ウィンドウ本体
-	
+
 	Functions f = new Functions();
 
 
@@ -33,7 +33,7 @@ public class Gui extends JFrame {
 				data[i][j] = false;
 			}
 		}
-		
+
 		// ウィンドウの閉じ方
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -129,7 +129,7 @@ public class Gui extends JFrame {
 
 		// ボタン作成
 		JLabel label = new JLabel(untreated_files[number]);//演目表示ラベル追加
-		
+
 		JButton btn1 = new JButton("　決定　");
 		btn1.setPreferredSize(new Dimension(100, 100));// ボタン追加
 		JButton btn2 = new JButton("リセット");
@@ -149,7 +149,7 @@ public class Gui extends JFrame {
 
 		Container contentPane = getContentPane();
 		setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
-		
+
 		getContentPane().add(p1);
 		p1.add(Box.createRigidArea(new Dimension(30,0)));
 		getContentPane().add(p2);
@@ -235,6 +235,9 @@ public class Gui extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("スキップ");
+				System.out.println(untreated_files[number] + "のデータ入力をスキップしました。");
+				dispose();
+				f.aaa(number+1, pass_name, untreated_files, dataName);
 			}
 		});
 

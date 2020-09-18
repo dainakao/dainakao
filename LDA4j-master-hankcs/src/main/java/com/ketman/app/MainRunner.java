@@ -12,7 +12,7 @@ import com.hankcs.lda.LdaUtil;
 
 public class MainRunner {
 
-	static int topic = 30;
+	static int topic = 20;
 	static int word = 15;
 
 	public static void main(String[] args)	{

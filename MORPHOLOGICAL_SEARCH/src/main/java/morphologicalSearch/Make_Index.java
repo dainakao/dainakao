@@ -13,7 +13,7 @@ public class Make_Index {
 	//文書から空白を取り除く
 	public void prepare_sentences(String pass_name) {
 		//ファイル名の一覧を取得する
-		File file = new File(pass_name+"\\data");
+		File file = new File(pass_name+"\\unorganized_data");
 		File files[] = file.listFiles();
 
 		String FN;//ファイル名
