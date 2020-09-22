@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -38,7 +40,9 @@ public class Gui extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// 位置とサイズ
-		setBounds(100, 100, 600, 400);
+		GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		Rectangle rect = env.getMaximumWindowBounds();
+		setBounds(rect);
 
 		int counter = 0;
 		int C;
@@ -97,7 +101,9 @@ public class Gui extends JFrame {
 		counter=0;
 		//チェックボックス作成
 		JPanel p4 = new JPanel();
+		JPanel p5 = new JPanel();
 		p4.setLayout(new BoxLayout(p4, BoxLayout.PAGE_AXIS));
+		p5.setLayout(new BoxLayout(p5, BoxLayout.PAGE_AXIS));
 		for(int i=0; i<dataName[0].length; i++) {
 			if(dataName[3][counter].contentEquals("")) break;
 			counter++;
@@ -106,14 +112,19 @@ public class Gui extends JFrame {
 		JCheckBox check4[] = new JCheckBox[C];
 		for(int i=0; i<C; i++) {
 			check4[i] = new JCheckBox(dataName[3][i]);
-			p4.add(check4[i]);
-			p4.add(Box.createRigidArea(new Dimension(0,10)));
+			if(i<C/2) {
+				p4.add(check4[i]);
+				p4.add(Box.createRigidArea(new Dimension(0,5)));
+			}else {
+				p5.add(check4[i]);
+				p5.add(Box.createRigidArea(new Dimension(0,5)));
+			}
 		}
 
 		counter=0;
 		//チェックボックス作成
-		JPanel p5 = new JPanel();
-		p5.setLayout(new BoxLayout(p5, BoxLayout.PAGE_AXIS));
+		JPanel p6 = new JPanel();
+		p6.setLayout(new BoxLayout(p6, BoxLayout.PAGE_AXIS));
 		for(int i=0; i<dataName[0].length; i++) {
 			if(dataName[4][counter].contentEquals("")) break;
 			counter++;
@@ -122,8 +133,8 @@ public class Gui extends JFrame {
 		JCheckBox check5[] = new JCheckBox[C];
 		for(int i=0; i<C; i++) {
 			check5[i] = new JCheckBox(dataName[4][i]);
-			p5.add(check5[i]);
-			p5.add(Box.createRigidArea(new Dimension(0,10)));
+			p6.add(check5[i]);
+			p6.add(Box.createRigidArea(new Dimension(0,5)));
 		}
 
 
@@ -159,6 +170,8 @@ public class Gui extends JFrame {
 		getContentPane().add(p4);
 		p4.add(Box.createRigidArea(new Dimension(30,0)));
 		getContentPane().add(p5);
+		p5.add(Box.createRigidArea(new Dimension(30,0)));
+		getContentPane().add(p6);
 		p5.add(Box.createRigidArea(new Dimension(30,0)));
 		getContentPane().add(pp);
 		pp.add(Box.createRigidArea(new Dimension(150,0)));
@@ -213,7 +226,9 @@ public class Gui extends JFrame {
 						data[4][i] = false;
 					}
 				}
-				dataEntry(number, pass_name, untreated_files[number], data,untreated_files, dataName);
+				System.out.println("");
+				safety(number, pass_name, untreated_files[number], data, untreated_files, dataName);
+				System.out.println("");
 			}
 		});
 
@@ -222,11 +237,29 @@ public class Gui extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("リセット");
-				for(int i=0; i<dataName.length; i++) {
-					for(int j=0; j<dataName[0].length; j++) {
-						System.out.print(dataName[i][j]+data[i][j] + "   ");
-					}
-					System.out.println();
+				//種類のリセット
+				for (int i = 0 ; i < radio1.length; i++){
+					radio1[i].setSelected(false);
+				}
+
+				//古典・新作のリセット
+				for (int i = 0 ; i < radio2.length; i++){
+					radio2[i].setSelected(false);
+				}
+
+				//江戸・上方のリセット
+				for (int i = 0 ; i < radio3.length; i++){
+					radio3[i].setSelected(false);
+				}
+
+				//チェックボックスのリセット
+				for (int i = 0 ; i < check4.length; i++){
+					check4[i].setSelected(false);
+				}
+
+				//チェックボックスのリセット
+				for (int i = 0 ; i < check5.length; i++){
+					check5[i].setSelected(false);
 				}
 			}
 		});
@@ -270,6 +303,25 @@ public class Gui extends JFrame {
 			//エラー処理
 		}catch(IOException e) {
 			System.out.println(e);
+		}
+	}
+
+	public void safety(int number, String pass_name, String file_name, boolean[][] data, String[] untreated_files, String[][] dataName) {
+		boolean status = true;
+		fast :for(int i=0; i<data.length; i++) {
+			for(int j=0; j<data[i].length; j++) {
+				if(data[i][j]==true) break;
+				if(j==data[i].length-1) {
+					System.out.println("各項目最低1つは入力してください");
+					status = false;
+					break fast;
+				}
+			}
+		}
+
+		if(status==true) {
+			System.out.println("～検索結果～");
+			dataEntry(number, pass_name, untreated_files[number], data,untreated_files, dataName);
 		}
 	}
 }
