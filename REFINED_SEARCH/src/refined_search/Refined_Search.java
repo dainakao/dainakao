@@ -3,6 +3,8 @@ package refined_search;
 
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -35,7 +37,9 @@ public class Refined_Search extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// 位置とサイズ
-		setBounds(100, 100, 600, 400);
+		GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		Rectangle rect = env.getMaximumWindowBounds();
+		setBounds(rect);
 
 		int counter = 0;
 		int C;
@@ -94,7 +98,9 @@ public class Refined_Search extends JFrame {
 		counter=0;
 		//チェックボックス作成
 		JPanel p4 = new JPanel();
+		JPanel p5 = new JPanel();
 		p4.setLayout(new BoxLayout(p4, BoxLayout.PAGE_AXIS));
+		p5.setLayout(new BoxLayout(p5, BoxLayout.PAGE_AXIS));
 		for(int i=0; i<dataName[0].length; i++) {
 			if(dataName[3][counter].contentEquals("")) break;
 			counter++;
@@ -103,14 +109,19 @@ public class Refined_Search extends JFrame {
 		JCheckBox check4[] = new JCheckBox[C];
 		for(int i=0; i<C; i++) {
 			check4[i] = new JCheckBox(dataName[3][i]);
-			p4.add(check4[i]);
-			p4.add(Box.createRigidArea(new Dimension(0,10)));
+			if(i<C/2) {
+				p4.add(check4[i]);
+				p4.add(Box.createRigidArea(new Dimension(0,5)));
+			}else {
+				p5.add(check4[i]);
+				p5.add(Box.createRigidArea(new Dimension(0,5)));
+			}
 		}
 
 		counter=0;
 		//チェックボックス作成
-		JPanel p5 = new JPanel();
-		p5.setLayout(new BoxLayout(p5, BoxLayout.PAGE_AXIS));
+		JPanel p6 = new JPanel();
+		p6.setLayout(new BoxLayout(p6, BoxLayout.PAGE_AXIS));
 		for(int i=0; i<dataName[0].length; i++) {
 			if(dataName[4][counter].contentEquals("")) break;
 			counter++;
@@ -119,13 +130,13 @@ public class Refined_Search extends JFrame {
 		JCheckBox check5[] = new JCheckBox[C];
 		for(int i=0; i<C; i++) {
 			check5[i] = new JCheckBox(dataName[4][i]);
-			p5.add(check5[i]);
-			p5.add(Box.createRigidArea(new Dimension(0,10)));
+			p6.add(check5[i]);
+			p6.add(Box.createRigidArea(new Dimension(0,5)));
 		}
 
 
 		// ボタン作成
-		JLabel label = new JLabel(files[number]);//演目表示ラベル追加
+		JLabel label = new JLabel("検索したい演目の条件を指定して検索ボタンを押してください");//演目表示ラベル追加
 
 		JButton btn1 = new JButton("　検索　");
 		btn1.setPreferredSize(new Dimension(100, 100));// ボタン追加
@@ -152,6 +163,8 @@ public class Refined_Search extends JFrame {
 		getContentPane().add(p4);
 		p4.add(Box.createRigidArea(new Dimension(30,0)));
 		getContentPane().add(p5);
+		p5.add(Box.createRigidArea(new Dimension(30,0)));
+		getContentPane().add(p6);
 		p5.add(Box.createRigidArea(new Dimension(30,0)));
 		getContentPane().add(pp);
 		pp.add(Box.createRigidArea(new Dimension(150,0)));
@@ -205,7 +218,9 @@ public class Refined_Search extends JFrame {
 						conditions[4][i] = false;
 					}
 				}
+				System.out.println("～検索結果～");
 				dataSearch(files, dataName, data, conditions);
+				System.out.println();
 			}
 		});
 
@@ -214,11 +229,29 @@ public class Refined_Search extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("リセット");
-				for(int i=0; i<dataName.length; i++) {
-					for(int j=0; j<dataName[0].length; j++) {
-						System.out.print(dataName[i][j]+conditions[i][j] + "   ");
-					}
-					System.out.println();
+				//種類のリセット
+				for (int i = 0 ; i < radio1.length; i++){
+					radio1[i].setSelected(false);
+				}
+
+				//古典・新作のリセット
+				for (int i = 0 ; i < radio2.length; i++){
+					radio2[i].setSelected(false);
+				}
+
+				//江戸・上方のリセット
+				for (int i = 0 ; i < radio3.length; i++){
+					radio3[i].setSelected(false);
+				}
+
+				//チェックボックスのリセット
+				for (int i = 0 ; i < check4.length; i++){
+					check4[i].setSelected(false);
+				}
+
+				//チェックボックスのリセット
+				for (int i = 0 ; i < check5.length; i++){
+					check5[i].setSelected(false);
 				}
 			}
 		});
@@ -229,13 +262,16 @@ public class Refined_Search extends JFrame {
 	//データを探す
 	public void dataSearch(String[] files, String[][] dataName, boolean[][][] data, boolean[][] conditions) {
 		ArrayList<String> matched = new ArrayList<String>();
-		for(int i=0; i<data[0].length; i++) {
-			for(int j=0; j<data.length; j++) {
+		for(int i=0; i<data.length; i++) {
+			second:for(int j=0; j<data[0].length; j++) {
 				for(int k=0; k<data[0][0].length; k++) {
-					if(conditions[i][k]==data[j][i][k]) {
-						if(conditions[i][k]=true) {
-							matched.add(files[j]);
+					if(conditions[j][k]==true) {
+						if(data[i][j][k]==false) {
+							break second;
 						}
+					}
+					if(j==data[0].length-1 && k==data[0][0].length-1) {
+						matched.add(files[i]);
 					}
 				}
 			}

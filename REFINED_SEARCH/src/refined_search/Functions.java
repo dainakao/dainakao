@@ -101,12 +101,12 @@ public class Functions {
 				while ((line = br.readLine()) != null) {
 					// lineをカンマで分割し、配列dataに設定
 					str[counter] = line.split(",", 0);
-					counter++;
 					for(int j=0; j<str[counter].length; j++) {
 						data[i][counter][j] = Boolean.valueOf(str[counter][j]); // 分割後のデータを保持する配列
 					}
+					counter++;
 				}
-				System.out.println(files[i] + "のデータを取得");
+				//System.out.println(files[i] + "のデータを取得");
 				br.close();
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
@@ -118,21 +118,33 @@ public class Functions {
 
 
 	public String[][] dataName(String pass_name) {
-		String[][] dataName = new String[5][10];
-		for(int i=0; i<dataName.length; i++) {
-			for(int j=0; j<dataName[0].length; j++) {
-				dataName[i][j] = "";
-			}
-		}
+		String[][] dataName = new String[5][10];//いったん仮宣言
+		
 		//データのラベルを入手
-		BufferedReader br = null;
+		BufferedReader br;
 		try {
 			File file = new File(pass_name + "\\dataName.csv");
 			br = new BufferedReader(new FileReader(file));
 
 			int counter = 0;
 			// readLineで一行ずつ読み込む
+			int dataNameSize = 0;
 			String line; // 読み込み行
+			while ((line = br.readLine()) != null) {
+				if(dataNameSize<line.split(",", 0).length)dataNameSize = line.split(",", 0).length;
+			}
+			br.close();
+			//dataNameの大きさを設定、初期化
+			dataName = new String[5][dataNameSize];
+			for(int i=0; i<dataName.length; i++) {
+				for(int j=0; j<dataName[0].length; j++) {
+					dataName[i][j] = "";
+				}
+			}
+
+			br = new BufferedReader(new FileReader(file));
+			counter = 0;
+			// readLineで一行ずつ読み込む
 			String[][] data = new String[dataName.length][dataName[0].length]; // 分割後のデータを保持する配列
 			while ((line = br.readLine()) != null) {
 				// lineをカンマで分割し、配列dataに設定
@@ -155,6 +167,7 @@ public class Functions {
 
 		return dataName;
 	}
+
 
 
 }
