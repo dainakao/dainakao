@@ -28,7 +28,7 @@ public class YN_Search extends JFrame {
 
 	//GUIを設定・表示
 	public void conditionSelect(int number,String pass_name, String[] files, String[][] dataName, boolean[][][] data){
-		int fontsize = 24;//フォントサイズ
+		int fontsize = 12;//フォントサイズ
 
 		//データ配列を宣言、初期化（すべてfalse）
 		boolean[][] conditions = new boolean[dataName.length+1][dataName[0].length];
@@ -331,6 +331,7 @@ public class YN_Search extends JFrame {
 				//登場人物のリセット
 				for (int i = 0 ; i < bgroup4.length; i++){
 					bgroup4[i].clearSelection();
+					radio4_U[i].setSelected(true);
 				}
 
 				//チェックボックスのリセット
