@@ -89,8 +89,8 @@ public class TF_IDF extends JFrame{
 		}
 		return answer;
 	}
-	
-	
+
+
 	//長い語句を新インデックスから検索(足し算)
 	public String[][] add_long_search_TF_IDF(String file_name, String pass_name, String search_word, String[] matched_r) {
 		String [][] final_matched;
@@ -179,7 +179,7 @@ public class TF_IDF extends JFrame{
 					}
 				}
 			}
-			
+
 			//答えを返す
 			final_matched = new String[2][matched_w.size()];
 			for(int i=0; i<matched_w.size(); i++) {

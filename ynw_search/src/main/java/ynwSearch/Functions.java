@@ -29,13 +29,23 @@ public class Functions {
 		ys.conditionSelect(number, pass_name, files, dataName, data);
 		ys.setVisible(true);  // 表示
 	}
-
+	//GUI編集メニューを起動
+	public void Start_Correction_menu(int number, String pass_name, String[] untreated_files, String[] files, boolean[][][] data, String[][] dataName) {
+		Data_correction dc= new Data_correction();   // ウィンドウ作成
+		dc.guiSelect(number, pass_name, untreated_files, files, data, dataName);
+		dc.setVisible(true);  // 表示
+	}
+	//GUI編集を起動
+	public void Start_Correction(int file_number, int untreated_files_number, String pass_name, String[] untreated_files, String[] files, boolean[][][] data, String[][] dataName) {
+		Data_correction dc= new Data_correction();   // ウィンドウ作成
+		dc.dataCorrection(file_number, untreated_files_number, pass_name, untreated_files, files, data, dataName);
+		dc.setVisible(true);  // 表示
+	}
 	//初期画面を開く
 	public void menuStart(String pass_name) {
 		Menu mo = new Menu();
 		mo.menuOpen(pass_name);
 		mo.setVisible(true); // 表示
-
 	}
 
 
@@ -370,10 +380,11 @@ public class Functions {
 			String line; // 読み込み行
 			while ((line = br.readLine()) != null) {
 				if(dataNameSize<line.split(",", 0).length)dataNameSize = line.split(",", 0).length;
+				counter++;
 			}
 			br.close();
 			//dataNameの大きさを設定、初期化
-			dataName = new String[5][dataNameSize];
+			dataName = new String[counter][dataNameSize];
 			for(int i=0; i<dataName.length; i++) {
 				for(int j=0; j<dataName[0].length; j++) {
 					dataName[i][j] = "";
