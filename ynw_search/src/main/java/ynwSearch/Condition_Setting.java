@@ -363,9 +363,7 @@ public class Condition_Setting extends JFrame {
 					}
 					if (i==radio4_U.length-1) {
 						safety(number, pass_name, data, untreated_files, files, dataName);
-						System.out.println();
-						dispose();
-						f.Start_Setting(number+1, pass_name, untreated_files, files, dataName);
+
 					}
 				}
 			}
@@ -418,7 +416,7 @@ public class Condition_Setting extends JFrame {
 
 	public void safety(int number, String pass_name, boolean[][] data, String[] untreated_files, String[] files, String[][] dataName) {
 		boolean status = true;
-		fast :for(int i=0; i<data.length-1; i++) {
+		fast :for(int i=0; i<data.length-2; i++) {
 			for(int j=0; j<data[i].length; j++) {
 				if(data[i][j]==true) break;
 				if(j==data[i].length-1) {
@@ -436,6 +434,11 @@ public class Condition_Setting extends JFrame {
 			mi.prepare_sentences(pass_name, untreated_files[number]);
 			mm.start_morphorogical(pass_name, untreated_files[number]);
 			System.out.println(untreated_files[number] + "のデータを入力しました。");
+			System.out.println();
+			dispose();
+			f.Start_Setting(number+1, pass_name, untreated_files, files, dataName);
+		}else {
+			
 		}
 	}
 
