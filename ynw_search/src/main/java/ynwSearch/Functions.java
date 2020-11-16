@@ -21,30 +21,58 @@ public class Functions {
 			}
 		}
 		cs.guiInput(number, pass_name, untreated_files, files, dataName);
+		cs.setTitle("落語演目分類（管理者）");
 		cs.setVisible(true);  // 表示
 	}
 	//GUI検索を起動
 	public void Start_Search(int number, String pass_name, String[] files, String[][] dataName, boolean[][][] data) {
 		Ynw_Search ys= new Ynw_Search();   // ウィンドウ作成
 		ys.conditionSelect(number, pass_name, files, dataName, data);
+		ys.setTitle("落語演目検索（管理者）");
+		ys.setVisible(true);  // 表示
+	}
+	//GUI詳細を起動
+	public void Start_detailView(String file_name, String pass_name) {
+		Ynw_Search ys= new Ynw_Search();   // ウィンドウ作成
+		ys.detailView(file_name, pass_name);
+		ys.setTitle(file_name);
 		ys.setVisible(true);  // 表示
 	}
 	//GUI編集メニューを起動
 	public void Start_Correction_menu(int number, String pass_name, String[] untreated_files, String[] files, boolean[][][] data, String[][] dataName) {
 		Data_correction dc= new Data_correction();   // ウィンドウ作成
 		dc.guiSelect(number, pass_name, untreated_files, files, data, dataName);
+		dc.setTitle("落語演目編集（管理者）");
 		dc.setVisible(true);  // 表示
 	}
 	//GUI編集を起動
 	public void Start_Correction(int file_number, int untreated_files_number, String pass_name, String[] untreated_files, String[] files, boolean[][][] data, String[][] dataName) {
 		Data_correction dc= new Data_correction();   // ウィンドウ作成
 		dc.dataCorrection(file_number, untreated_files_number, pass_name, untreated_files, files, data, dataName);
+		dc.setTitle(files[file_number] + "を編集（管理者）");
 		dc.setVisible(true);  // 表示
+	}
+	
+	//GUI選択データ入力メニューを起動
+	public void Start_Condition_Select_and_Set_menu(String pass_name, String[] untreated_files, String[] files, String[][] dataName) {
+		Condition_Select_and_Set css= new Condition_Select_and_Set();   // ウィンドウ作成
+		css.guiSelectSet(pass_name, untreated_files, files, dataName);
+		css.setTitle("落語演目選択データ入力（管理者）");
+		css.setVisible(true);  // 表示
+	}
+	
+	//GUI選択データ入力を起動
+	public void Start_Condition_Select_and_Set(int untreated_files_number, String pass_name, String[] untreated_files, String[] files, String[][] dataName) {
+		Condition_Select_and_Set css= new Condition_Select_and_Set();   // ウィンドウ作成
+		css. dataSelectSet(untreated_files_number, pass_name, untreated_files, files, dataName);
+		css.setTitle(untreated_files[untreated_files_number] + "を落語演目分類（管理者）");
+		css.setVisible(true);  // 表示
 	}
 	//初期画面を開く
 	public void menuStart(String pass_name) {
 		Menu mo = new Menu();
 		mo.menuOpen(pass_name);
+		mo.setTitle("管理者メニュー");
 		mo.setVisible(true); // 表示
 	}
 
@@ -107,7 +135,7 @@ public class Functions {
 
 				//何も無かったらnullが返る
 				while((s = br.readLine()) != null){
-					System.out.println(s);
+
 					b = b + s;
 					b = b + "\n";
 				}
@@ -341,6 +369,7 @@ public class Functions {
 			//データのラベルを入手
 			BufferedReader br = null;
 			try {
+
 				File file = new File(pass_name + "\\condition\\"+ files[i]);
 				br = new BufferedReader(new FileReader(file));
 
@@ -348,6 +377,7 @@ public class Functions {
 				// readLineで一行ずつ読み込む
 				String line; // 読み込み行
 				String str[][] = new String[dataName.length][dataName[0].length];
+				System.out.println(file);
 				while ((line = br.readLine()) != null) {
 					// lineをカンマで分割し、配列dataに設定
 					str[counter] = line.split(",", 0);
@@ -356,7 +386,6 @@ public class Functions {
 					}
 					counter++;
 				}
-				//System.out.println(files[i] + "のデータを取得");
 				br.close();
 			} catch (Exception e) {
 				System.out.println(e.getMessage());

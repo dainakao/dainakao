@@ -18,23 +18,23 @@ public class Make_Morphorogical {
 	Functions f = new Functions();
 	//morphorogicalを作る(助詞と助動詞を除く)
 	public void start_morphorogical(String pass_name, String file_name) {
-			try {
-				//ファイルを読み込む
-				FileReader fr = new FileReader(pass_name + "\\file\\" + file_name);
-				BufferedReader br = new BufferedReader(fr);
+		try {
+			//ファイルを読み込む
+			FileReader fr = new FileReader(pass_name + "\\file\\" + file_name);
+			BufferedReader br = new BufferedReader(fr);
 
-				//morphorogicalを作る
-				this.make_morphorogical(file_name, f.Read_String(file_name,pass_name), pass_name);
+			//morphorogicalを作る
+			this.make_morphorogical(file_name, f.Read_String(file_name,pass_name), pass_name);
 
-				//終了処理
-				br.close();
-				fr.close();
+			//終了処理
+			br.close();
+			fr.close();
 
-			} catch (IOException ex) {
-				//例外発生時処理
-				ex.printStackTrace();
-			}
+		} catch (IOException ex) {
+			//例外発生時処理
+			ex.printStackTrace();
 		}
+	}
 	public void make_morphorogical(String file_name, String parseWord, String pass_name){
 		Builder builder = Tokenizer.builder();
 		// Searchモード

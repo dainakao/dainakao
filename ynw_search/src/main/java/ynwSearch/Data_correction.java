@@ -65,6 +65,7 @@ public class Data_correction extends JFrame {
 		scrollpane.setBounds(0, 0, 510, 400);
 		this.getContentPane().add(scrollpane);
 		scrollpane.setViewportView(p1);
+		scrollpane.getVerticalScrollBar().setUnitIncrement(25);
 
 		// 決定ボタン作成
 		JButton btn1 = new JButton("　変更　");

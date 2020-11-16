@@ -24,8 +24,8 @@ public class Menu extends JFrame{
 		// 位置とサイズ
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds(screenSize.width/2, 0, screenSize.width/2, screenSize.height);
-		  Dimension size = getSize();
-		  int width = size.width;
+		Dimension size = getSize();
+		int width = size.width;
 
 
 		//説明文
@@ -57,11 +57,12 @@ public class Menu extends JFrame{
 		JButton btn3 = new JButton("データの検索");
 		btn3.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, width/22));
 		btn3.setMaximumSize(new Dimension(width/2, 2*fontsize));// ボタン追加
-		
+
 		// ボタン作成
 		JButton btn4 = new JButton("データの編集");
-		btn3.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, width/22));
-		btn3.setMaximumSize(new Dimension(width/2, 2*fontsize));// ボタン追加
+
+		// ボタン作成
+		JButton btn5 = new JButton("データを選択して設定");
 
 		JPanel p3 = new JPanel();
 		p3.add(Box.createRigidArea(new Dimension(0,3*fontsize)));
@@ -69,6 +70,8 @@ public class Menu extends JFrame{
 		p3.add(btn3);
 		p3.add(Box.createRigidArea(new Dimension(0,3*fontsize)));
 		p3.add(btn4);
+		p3.add(Box.createRigidArea(new Dimension(0,3*fontsize)));
+		p3.add(btn5);
 		p3.add(Box.createVerticalGlue());
 
 		Container contentPane = getContentPane();
@@ -106,6 +109,12 @@ public class Menu extends JFrame{
 				dispose();
 				TF_IDF tf = new TF_IDF();
 				Make_Index mi = new Make_Index();
+				Make_Morphorogical mm = new Make_Morphorogical();
+				String[] files = f.listUp(pass_name + "\\file\\");
+				for(int i=0; i<files.length; i++) {
+				mm.start_morphorogical(pass_name, files[i]);
+				}
+				System.out.println(files.length);
 				mi.make_index(pass_name);
 				tf.make_TF_IDF("Inverted_Index.csv", pass_name);
 				f.menuStart(pass_name);
@@ -137,7 +146,7 @@ public class Menu extends JFrame{
 				dispose();
 				//ファイルをリストアップ
 				String[] files = f.listUp(pass_name + "\\condition\\");
-				
+
 				//まだ処理されていないファイルをリストアップ
 				String[] untreated_files = f.listUp(pass_name+"\\untreated_file\\");
 
@@ -149,6 +158,25 @@ public class Menu extends JFrame{
 
 				//GUIを表示
 				f.Start_Correction_menu(0, pass_name, untreated_files, files, data, dataName);
+			}
+		});
+		
+		//データを選択して入力クリック時の処理
+		btn5.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				//ファイルをリストアップ
+				String[] files = f.listUp(pass_name + "\\condition\\");
+
+				//まだ処理されていないファイルをリストアップ
+				String[] untreated_files = f.listUp(pass_name+"\\untreated_file\\");
+
+				//ラベルを取得
+				String[][] dataName = f.dataName(pass_name);
+
+				//GUIを表示
+				f.Start_Condition_Select_and_Set_menu(pass_name, untreated_files, files, dataName);
 			}
 		});
 	}

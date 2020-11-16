@@ -34,7 +34,6 @@ public class TF_IDF extends JFrame{
 				df=1;
 				ArrayList<Integer> DF = new ArrayList<Integer>();
 				for(int j=1; j<ind.get(ID).size();j=j+2) {
-					//System.out.println(i+", "+ind.get(ID).get(j));
 					if(i==Integer.parseInt(ind.get(ID).get(j))) d++;
 					DF.add(Integer.parseInt(ind.get(ID).get(j)));
 				}
@@ -241,7 +240,6 @@ public class TF_IDF extends JFrame{
 			for(int i=0; i<search_words.length; i++) {
 				datas_1[i] = this.tf_idf(pass_name, search_words[i], indexs,  tf_idf);
 			}
-			System.out.println();
 
 			double [][] answer = new double[2][files.length];//２{ファイル名・TF_IDF値}×ファイル数
 
@@ -261,9 +259,6 @@ public class TF_IDF extends JFrame{
 			double [] fake = new double[files.length];
 			for(int i=0; i<fake.length; i++)fake[i]=0;
 
-			System.out.println(answer.length);
-			System.out.println(answer[0].length);
-			System.out.println(fake.length);
 			//answer配列をクイックソート
 			Functions.quick(answer[1], answer[0], fake, 0, answer[1].length-1);
 

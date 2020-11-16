@@ -72,14 +72,12 @@ public class Make_Index {
 
 				int number=0;//出現位置をカウント
 				//morphorogical_から始まる文章のみをリストに加える
-				if(FN.substring(0,14).equals("morphorogical_")) {;
 				while ((line = br.readLine()) != null) {
 					//読み込んだbufをFNに代入
 					WL.add(line + "");
 					WL.add(i + "");
 					WL.add(number + "");
 					number+=line.length();
-				}
 				}
 
 				//終了処理
