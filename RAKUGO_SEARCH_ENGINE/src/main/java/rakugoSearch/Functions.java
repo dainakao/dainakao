@@ -14,6 +14,14 @@ public class Functions {
 	public void Start_Search(int number, String pass_name, String[] files, String[][] dataName, boolean[][][] data) {
 		Ynw_Search ys= new Ynw_Search();   // ウィンドウ作成
 		ys.conditionSelect(number, pass_name, files, dataName, data);
+		ys.setTitle("落語演目検索");
+		ys.setVisible(true);  // 表示
+	}
+	//GUI詳細を起動
+	public void Start_detailView(String file_name, String pass_name) {
+		Ynw_Search ys= new Ynw_Search();   // ウィンドウ作成
+		ys.detailView(file_name, pass_name);
+		ys.setTitle(file_name);
 		ys.setVisible(true);  // 表示
 	}
 

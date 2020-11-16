@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -24,6 +25,12 @@ import javax.swing.JTextField;
 public class Ynw_Search extends JFrame {
 	private static final long serialVersionUID = 1L;
 	// ウィンドウ本体
+
+	Functions f = new Functions();
+	public int Selected = 0;
+	JRadioButton[] radio;
+	ButtonGroup bgroup_pp;
+	public int final_matched_length = 0;
 
 	//GUIを設定・表示
 	public void conditionSelect(int number,String pass_name, String[] files, String[][] dataName, boolean[][][] data){
@@ -52,7 +59,6 @@ public class Ynw_Search extends JFrame {
 		ButtonGroup bgroup1 = new ButtonGroup();
 		JPanel p1 = new JPanel();
 		p1.setLayout(new BoxLayout(p1, BoxLayout.PAGE_AXIS));
-		p1.add(Box.createRigidArea(new Dimension(0,2*(fontsize+distance))));
 		JLabel label = new JLabel("分類");//
 		label.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, 2*fontsize));
 		p1.add(label);
@@ -224,7 +230,6 @@ public class Ynw_Search extends JFrame {
 		//チェックボックス作成
 		JPanel p6 = new JPanel();
 		p6.setLayout(new BoxLayout(p6, BoxLayout.PAGE_AXIS));
-		p6.add(Box.createRigidArea(new Dimension(0,3*fontsize)));
 		label = new JLabel("舞台");//
 		label.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, 2*fontsize));
 		p6.add(label);
@@ -243,23 +248,26 @@ public class Ynw_Search extends JFrame {
 
 
 		//検索ボックス作成
-		label = new JLabel("検索したいキーワード");//演目表示ラベル追加
+		p6.add(Box.createRigidArea(new Dimension(0,3*distance)));
+		label = new JLabel("キーワード");//演目表示ラベル追加
 		label.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, 2*fontsize));
+		p6.add(label);
+		p6.add(Box.createRigidArea(new Dimension(0,distance)));
 		JTextField search_box = new JTextField();
 		search_box.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
 		search_box.setMaximumSize(new Dimension(30*fontsize, 2*fontsize));
-
-		p6.add(Box.createRigidArea(new Dimension(0,3*distance)));
-		p6.add(label);
-		p6.add(Box.createRigidArea(new Dimension(0,distance)));
 		p6.add(search_box);
 
 		//不適切除外ボタン作成
-		label = new JLabel("不適切な表現を含む演目を除外する");//演目表示ラベル追加
-		label.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, 2*fontsize));
-		JCheckBox check6 = new JCheckBox(dataName[5][0]);
 		p6.add(Box.createRigidArea(new Dimension(0,3*distance)));
+		label = new JLabel("不適切な表現を");//演目表示ラベル追加
+		label.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, 2*fontsize));
 		p6.add(label);
+		label = new JLabel("含む演目を除外する");//演目表示ラベル追加
+		label.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, 2*fontsize));
+		p6.add(label);
+
+		JCheckBox check6 = new JCheckBox(dataName[5][0]);
 		p6.add(check6);
 
 		// ボタン作成
@@ -270,8 +278,6 @@ public class Ynw_Search extends JFrame {
 		btn2.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, 2*fontsize));
 		btn2.setPreferredSize(new Dimension(4*btn2.getUIClassID().length()*fontsize, 4*fontsize));// ボタン追加
 
-
-
 		p6.add(Box.createRigidArea(new Dimension(0,distance)));
 		p6.add(btn1);
 		p6.add(Box.createRigidArea(new Dimension(0,distance)));
@@ -279,19 +285,41 @@ public class Ynw_Search extends JFrame {
 		p6.add(Box.createVerticalGlue());
 
 		//結果出力エリア
-		JTextArea textarea = new JTextArea();
-		textarea.setPreferredSize(new Dimension(32*fontsize, 8*fontsize));
-		textarea.setEditable(false);
-
 		JPanel pp = new JPanel();
 		pp.setLayout(new BoxLayout(pp, BoxLayout.Y_AXIS));
-		pp.add(Box.createRigidArea(new Dimension(0,3*fontsize)));
-		pp.add(textarea);
 
+		String[] matched = dataSearch(files, dataName, data, conditions);
+		TF_IDF tf = new TF_IDF();
+		String[][] final_matched = tf.add_long_search_TF_IDF("Inverted_Index.csv", pass_name, search_box.getText(), matched);
+		final_matched_length = final_matched[0].length;
+
+		radio = new JRadioButton[final_matched_length];
+		bgroup_pp = new ButtonGroup();
+
+		for(int i=0; i<final_matched_length; i++) {
+			radio[i] = new JRadioButton(final_matched[0][i] + ", " + final_matched[1][i]);
+			radio[i].setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
+			radio[i].setPreferredSize(new Dimension(4*radio[i].getUIClassID().length()*fontsize, 4*fontsize));// ボタン追加
+			pp.add(radio[i]);
+			bgroup_pp.add(radio[i]);
+		}
+
+		JScrollPane  scrollpane = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollpane.setBounds(0, 0, 510, 200);
+		this.getContentPane().add(scrollpane);
+		scrollpane.setViewportView(pp);
+		scrollpane.getVerticalScrollBar().setUnitIncrement(25);
+		//詳細ボタン
+		JPanel p7 = new JPanel();
+		p7.setLayout(new BoxLayout(p7, BoxLayout.PAGE_AXIS));
+		JButton btn3 = new JButton("あらすじを見る");
+		btn3.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, 2*fontsize));
+		btn3.setPreferredSize(new Dimension(7*btn3.getUIClassID().length()*fontsize, 4*fontsize));
+		p7.add(btn3);
+		p7.add(scrollpane);
 
 		//上記のパネルをひとまとめに
 		Container contentPane = getContentPane();
-		contentPane.setSize(screenSize);
 		setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
 
 		getContentPane().add(Box.createRigidArea(new Dimension(fontsize,0)));
@@ -304,9 +332,13 @@ public class Ynw_Search extends JFrame {
 		getContentPane().add(p5_U);
 		getContentPane().add(p5_N);
 		getContentPane().add(p6);
-		getContentPane().add(pp);
-		getContentPane().add(Box.createRigidArea(new Dimension(fontsize,0)));
-		getContentPane().add(Box.createHorizontalGlue());
+		getContentPane().add(p7);
+
+		for (int i = 0 ; i < final_matched_length; i++){
+			if (radio[i].isSelected()){
+				Selected = i;
+			}
+		}
 
 		//検索クリック時の処理
 		btn1.addActionListener(new ActionListener() {
@@ -372,14 +404,40 @@ public class Ynw_Search extends JFrame {
 				}
 
 				//検索
+				pp.removeAll();
+				scrollpane.removeAll();
+				p7.removeAll();
+				contentPane.remove(contentPane.getComponentCount()-1);
+
 				String[] matched = dataSearch(files, dataName, data, conditions);
 				TF_IDF tf = new TF_IDF();
 				String[][] final_matched = tf.add_long_search_TF_IDF("Inverted_Index.csv", pass_name, search_box.getText(), matched);
-				textarea.replaceRange("", 0, textarea.getText().length());
-				for(int i=0; i<final_matched[0].length; i++) {
-					textarea.append(final_matched[0][i] + ", " + final_matched[1][i] + "\n");
+				final_matched_length = final_matched[0].length;
+
+				radio = new JRadioButton[final_matched_length];
+				bgroup_pp = new ButtonGroup();
+
+				for(int i=0; i<final_matched_length; i++) {
+					radio[i] = new JRadioButton(final_matched[0][i] + ", " + final_matched[1][i]);
+					radio[i].setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
+					radio[i].setPreferredSize(new Dimension(4*radio[i].getUIClassID().length()*fontsize, 4*fontsize));// ボタン追加
+					pp.add(radio[i]);
+					bgroup_pp.add(radio[i]);
 				}
-				System.out.println();
+				JScrollPane scrollpane = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+				scrollpane.setBounds(0, 0, 510, 200);
+				getContentPane().add(scrollpane);
+				scrollpane.setViewportView(pp);
+				scrollpane.getVerticalScrollBar().setUnitIncrement(25);
+				contentPane.revalidate();
+				//詳細ボタン
+				JPanel p7 = new JPanel();
+				p7.setLayout(new BoxLayout(p7, BoxLayout.PAGE_AXIS));
+				btn3.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, 2*fontsize));
+				btn3.setPreferredSize(new Dimension(4*btn3.getUIClassID().length()*fontsize, 4*fontsize));
+				p7.add(btn3);
+				p7.add(scrollpane);
+				getContentPane().add(p7);
 			}
 		});
 
@@ -410,6 +468,60 @@ public class Ynw_Search extends JFrame {
 			}
 		});
 
+		//詳細クリック時の処理
+		btn3.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				for (int i = 0 ; i < final_matched_length; i++){
+					if (radio[i].isSelected()){
+						Selected = i;
+					}
+				}
+
+				//検索
+				pp.removeAll();
+				scrollpane.removeAll();
+				p7.removeAll();
+				contentPane.remove(contentPane.getComponentCount()-1);
+
+				String[] matched = dataSearch(files, dataName, data, conditions);
+				TF_IDF tf = new TF_IDF();
+				String[][] final_matched = tf.add_long_search_TF_IDF("Inverted_Index.csv", pass_name, search_box.getText(), matched);
+				final_matched_length = final_matched[0].length;
+
+				radio = new JRadioButton[final_matched_length];
+				bgroup_pp = new ButtonGroup();
+
+				for(int i=0; i<final_matched_length; i++) {
+					radio[i] = new JRadioButton(final_matched[0][i] + ", " + final_matched[1][i]);
+					radio[i].setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
+					radio[i].setPreferredSize(new Dimension(4*radio[i].getUIClassID().length()*fontsize, 4*fontsize));// ボタン追加
+					pp.add(radio[i]);
+					bgroup_pp.add(radio[i]);
+				}
+				JScrollPane  scrollpane = new JScrollPane();
+				scrollpane.setBounds(0, 0, 510, 200);
+				getContentPane().add(scrollpane);
+				scrollpane.setViewportView(pp);
+				scrollpane.getVerticalScrollBar().setUnitIncrement(25);
+				contentPane.revalidate();
+				//詳細ボタン
+				JPanel p7 = new JPanel();
+				p7.setLayout(new BoxLayout(p7, BoxLayout.PAGE_AXIS));
+				btn3.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, 2*fontsize));
+				btn3.setPreferredSize(new Dimension(4*btn3.getUIClassID().length()*fontsize, 4*fontsize));
+				p7.add(btn3);
+				p7.add(scrollpane);
+				getContentPane().add(p7);
+
+				//演目の選択内容確認
+				System.out.println(final_matched[0][Selected]);
+				f.Start_detailView(final_matched[0][Selected], pass_name);
+				repaint();
+
+			}
+		});
+		btn1.doClick();
 	}
 
 	//データを探す
@@ -443,5 +555,37 @@ public class Ynw_Search extends JFrame {
 		}
 		return matched.toArray(new String[matched.size()]);
 	}
-}
 
+	//演目の詳細を表示
+	public void detailView(String file_name, String pass_name){
+		// ウィンドウの閉じ方
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		// 位置とサイズ
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		setBounds(0, 0, screenSize.width/4, screenSize.height/2);
+
+		//表示内容
+		JPanel p1 = new JPanel();
+		p1.setLayout(new BoxLayout(p1, BoxLayout.PAGE_AXIS));
+
+		JTextArea textarea = new JTextArea(f.Read_String(file_name,pass_name));
+		textarea.setPreferredSize(new Dimension(screenSize.width/4, screenSize.height/2));
+		textarea.setEditable(false);
+		textarea.setLineWrap(true);
+
+		JScrollPane  scrollpane = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollpane.setBounds(0, 0, 510, 200);
+		this.getContentPane().add(scrollpane);
+		scrollpane.setViewportView(textarea);
+		scrollpane.getVerticalScrollBar().setUnitIncrement(25);
+
+		//追加
+		p1.add(scrollpane);
+
+		//上記のパネルをひとまとめに
+		Container contentPane = getContentPane();
+		setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
+		getContentPane().add(p1);
+	}
+}

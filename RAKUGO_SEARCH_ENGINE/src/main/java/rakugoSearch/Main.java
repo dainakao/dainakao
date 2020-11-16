@@ -8,7 +8,7 @@ public class Main {
 	public static void main(String[] args) {
 			try {
 				String pass_name;
-				pass_name = new File("..").getCanonicalPath() + "\\ynw_search\\";
+				pass_name = new File("..").getCanonicalPath() + "\\落語検索エンジン\\";
 				//ファイルをリストアップ
 				String[] files = f.listUp(pass_name + "\\condition\\");
 
