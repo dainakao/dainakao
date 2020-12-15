@@ -418,12 +418,14 @@ public class Ynw_Search extends JFrame {
 				radio = new JRadioButton[final_matched_length];
 				bgroup_pp = new ButtonGroup();
 
-				for(int i=0; i<final_matched_length; i++) {
+				for(int i=final_matched_length-1; i>=0; i--) {
+					if(final_matched[0][i]!=null || final_matched[0][i]!="") {
 					radio[i] = new JRadioButton(final_matched[0][i] + ", " + final_matched[1][i]);
 					radio[i].setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
 					radio[i].setPreferredSize(new Dimension(4*radio[i].getUIClassID().length()*fontsize, 4*fontsize));// ボタン追加
 					pp.add(radio[i]);
 					bgroup_pp.add(radio[i]);
+					}
 				}
 				JScrollPane  scrollpane = new JScrollPane();
 				scrollpane.setBounds(0, 0, 510, 200);

@@ -125,11 +125,26 @@ public class TF_IDF extends JFrame{
 			// ノーマルモード
 			Tokenizer normal = builder.build();
 			List<Token> tokens = normal.tokenize(search_word);
-
-			search_words = new String[tokens.size()];
+			//空白を取り除く
+			for (int i=0; i<tokens.size(); i++) {
+				System.out.print(tokens.get(i).getSurfaceForm());
+				if(tokens.get(i).getSurfaceForm().equals(" ")||tokens.get(i).getSurfaceForm().equals("　")) {
+					tokens.remove(tokens.indexOf(tokens.get(i)));
+					i--;
+				}
+			}
+			System.out.println();
+			
+			search_words = new String[tokens.size()*2];
 			int counter=0;//一時的な変数
+			//原本を検索配列に代入
 			for (Token token : tokens) {
 				search_words[counter] = token.getSurfaceForm();
+				counter++;
+			}
+			//原本の読みを代入
+			for (Token token : tokens) {
+				search_words[counter] = token.getReading();
 				counter++;
 			}
 
@@ -139,6 +154,7 @@ public class TF_IDF extends JFrame{
 			ArrayList<ArrayList<String>> tf_idf = f.R_S("tf_idf.csv", pass_name);//一時的な変数7
 
 			for(int i=0; i<search_words.length; i++) {
+				System.out.println(search_words[i]);
 				datas_1[i] = this.tf_idf(pass_name, search_words[i], indexs,  tf_idf);
 			}
 			System.out.println();
@@ -188,357 +204,4 @@ public class TF_IDF extends JFrame{
 		}
 		return final_matched;
 	}
-
-	//長い語句を新インデックスから検索(掛け算)
-	public String[][] mul_long_search_TF_IDF(String file_name, String pass_name, String search_word, String[] matched_r) {
-		String [][] final_matched;
-		if(search_word.equals("")) {
-			final_matched = new String[2][matched_r.length];
-			//結果を出力
-			final_matched [0] = matched_r;
-		}else {
-			String search_words[];//検索語句
-
-			ArrayList<ArrayList<String>> indexs = new ArrayList<ArrayList<String>>();//転地インデックスをアレイリストで
-			//indexに転置インデックスを代入
-			String a[] = f.Read_Strings(file_name, pass_name);//一時的な変数
-
-			ArrayList<String> index = new ArrayList<String>();//転地インデックス
-			for(int i=0; i<a.length; i++) {
-				if(a[i].equals(",")) {
-				}else if(a[i].equals("\n")){
-					indexs.add(index);
-					index = new ArrayList<String>();//転地インデックス
-				}else {
-					index.add(a[i]);
-				}
-			}
-			File file = new File(pass_name + "\\file");
-			File[] files = file.listFiles();//ファイル名リスト
-
-			//検索部位
-			System.out.println("～検索結果～");
-
-			//検索語をmorphorogical状にカット
-			Builder builder = Tokenizer.builder();
-			// ノーマルモード
-			Tokenizer normal = builder.build();
-			List<Token> tokens = normal.tokenize(search_word);
-
-			search_words = new String[tokens.size()];
-			int counter=0;//一時的な変数
-			for (Token token : tokens) {
-				search_words[counter] = token.getSurfaceForm();
-				counter++;
-			}
-
-			//ファイルごとのTF_IDF値のリストを制定[検索語の形態素解析数][ファイル数]
-			double[][] datas_1 = new double[search_words.length][files.length];
-
-			ArrayList<ArrayList<String>> tf_idf = f.R_S("tf_idf.csv", pass_name);//一時的な変数7
-
-			for(int i=0; i<search_words.length; i++) {
-				datas_1[i] = this.tf_idf(pass_name, search_words[i], indexs,  tf_idf);
-			}
-
-			double [][] answer = new double[2][files.length];//２{ファイル名・TF_IDF値}×ファイル数
-
-			for(int i=0; i<answer[0].length; i++) {
-				answer[0][i] = i;
-				answer[1][i] = 1;
-				for(int j=0; j<search_words.length; j++) {
-					if(datas_1[j][i] == 0) {
-
-					}else {
-						answer[1][i] *= (1+datas_1[j][i]);
-					}
-				}
-			}
-
-			//数合わせの無駄な配列
-			double [] fake = new double[files.length];
-			for(int i=0; i<fake.length; i++)fake[i]=0;
-
-			//answer配列をクイックソート
-			Functions.quick(answer[1], answer[0], fake, 0, answer[1].length-1);
-
-			//条件検索にも引っ掛かっているもののみを絞り込み
-			ArrayList<String> matched_w = new ArrayList<String>();
-			ArrayList<Double> tf_value = new ArrayList<Double>();
-			for(int i=0; i<answer[0].length; i++) {
-				matched_w.add(files[(int)answer[0][i]].getName());
-				tf_value.add(answer[1][i]);
-			}
-			for(int i=0; i<matched_w.size(); i++) {
-				second: for(int j=0; j<matched_r.length; j++) {
-					if(matched_w.get(i).equals(matched_r[j]) && tf_value.get(i)!=0.0) {
-						break second;
-					}
-					if(j==matched_r.length-1) {
-						matched_w.remove(i);
-						tf_value.remove(i);
-						i--;
-					}
-				}
-			}
-
-			//答えを返す
-			final_matched = new String[2][matched_w.size()];
-			for(int i=0; i<matched_w.size(); i++) {
-				final_matched[0][i] = matched_w.get(i);
-				final_matched[1][i] = String.valueOf(tf_value.get(i));
-			}
-		}
-		return final_matched;
-	}
-
-	/*
-	//長い語句を新インデックスから検索(足し算)
-	public void add_long_search_TF_IDF(String file_name, String pass_name, String search_word, String[] matched_r) {
-		if(search_word.equals("")) {
-			//結果を出力
-			windowPrint(new ArrayList<String>( Arrays.asList(matched_r)));
-			setVisible(true);
-		}else {
-			String search_words[];//検索語句
-
-			ArrayList<ArrayList<String>> indexs = new ArrayList<ArrayList<String>>();//転地インデックスをアレイリストで
-			//indexに転置インデックスを代入
-			String a[] = f.Read_Strings(file_name, pass_name);//一時的な変数
-
-			ArrayList<String> index = new ArrayList<String>();//転地インデックス
-			for(int i=0; i<a.length; i++) {
-				if(a[i].equals(",")) {
-				}else if(a[i].equals("\n")){
-					indexs.add(index);
-					index = new ArrayList<String>();//転地インデックス
-				}else {
-					index.add(a[i]);
-				}
-			}
-			File file = new File(pass_name + "\\file");
-			File[] files = file.listFiles();//ファイル名リスト
-
-			//検索部位
-			System.out.println("～検索結果～");
-
-			//検索語をmorphorogical状にカット
-			Builder builder = Tokenizer.builder();
-			// ノーマルモード
-			Tokenizer normal = builder.build();
-			List<Token> tokens = normal.tokenize(search_word);
-
-			search_words = new String[tokens.size()];
-			int counter=0;//一時的な変数
-			for (Token token : tokens) {
-				search_words[counter] = token.getSurfaceForm();
-				counter++;
-			}
-
-			//ファイルごとのTF_IDF値のリストを制定[検索語の形態素解析数][ファイル数]
-			double[][] datas_1 = new double[search_words.length][files.length];
-
-			ArrayList<ArrayList<String>> tf_idf = f.R_S("tf_idf.csv", pass_name);//一時的な変数7
-
-			for(int i=0; i<search_words.length; i++) {
-				datas_1[i] = this.tf_idf(pass_name, search_words[i], indexs,  tf_idf);
-			}
-			System.out.println();
-
-			double [][] answer = new double[2][files.length];//２{ファイル名・TF_IDF値}×ファイル数
-
-			for(int i=0; i<answer[0].length; i++) {
-				answer[0][i] = i;
-				for(int j=0; j<search_words.length; j++) {
-					answer[1][i] += datas_1[j][i];
-				}
-			}
-
-			//数合わせの無駄な配列（quickを動かすため）
-			double [] fake = new double[files.length];
-			for(int i=0; i<fake.length; i++)fake[i]=0;
-
-			//answer配列をクイックソート
-			Functions.quick(answer[1], answer[0], fake, 0, answer[1].length-1);
-
-			//条件検索にも引っ掛かっているもののみを絞り込み
-			ArrayList<String> matched_w = new ArrayList<String>();
-			ArrayList<Double> tf_value = new ArrayList<Double>();
-			for(int i=0; i<answer[0].length; i++) {
-				matched_w.add(files[(int)answer[0][i]].getName());
-				tf_value.add(answer[1][i]);
-			}
-			for(int i=0; i<matched_w.size(); i++) {
-				second: for(int j=0; j<matched_r.length; j++) {
-					if(matched_w.get(i).equals(matched_r[j]) && tf_value.get(i)!=0.0) {
-						break second;
-					}
-					if(j==matched_r.length-1) {
-						matched_w.remove(i);
-						tf_value.remove(i);
-						i--;
-					}
-				}
-			}
-
-			//結果を出力
-			windowPrint(matched_w, tf_value);
-			setVisible(true);
-		}
-	}
-
-	//長い語句を新インデックスから検索(掛け算)
-	public void mul_long_search_TF_IDF(String file_name, String pass_name, String search_word, String[] matched_r) {
-		if(search_word.equals("")) {
-			System.out.println("検索語が入力されていません");
-		}else {
-			String search_words[];//検索語句
-
-			ArrayList<ArrayList<String>> indexs = new ArrayList<ArrayList<String>>();//転地インデックスをアレイリストで
-			//indexに転置インデックスを代入
-			String a[] = f.Read_Strings(file_name, pass_name);//一時的な変数
-
-			ArrayList<String> index = new ArrayList<String>();//転地インデックス
-			for(int i=0; i<a.length; i++) {
-				if(a[i].equals(",")) {
-				}else if(a[i].equals("\n")){
-					indexs.add(index);
-					index = new ArrayList<String>();//転地インデックス
-				}else {
-					index.add(a[i]);
-				}
-			}
-			File file = new File(pass_name + "\\file");
-			File[] files = file.listFiles();//ファイル名リスト
-
-			//検索部位
-			System.out.println("～検索結果～");
-
-			//検索語をmorphorogical状にカット
-			Builder builder = Tokenizer.builder();
-			// ノーマルモード
-			Tokenizer normal = builder.build();
-			List<Token> tokens = normal.tokenize(search_word);
-
-			search_words = new String[tokens.size()];
-			int counter=0;//一時的な変数
-			for (Token token : tokens) {
-				search_words[counter] = token.getSurfaceForm();
-				counter++;
-			}
-
-			//ファイルごとのTF_IDF値のリストを制定[検索語の形態素解析数][ファイル数]
-			double[][] datas_1 = new double[search_words.length][files.length];
-
-			ArrayList<ArrayList<String>> tf_idf = f.R_S("tf_idf.csv", pass_name);//一時的な変数7
-
-			for(int i=0; i<search_words.length; i++) {
-				datas_1[i] = this.tf_idf(pass_name, search_words[i], indexs,  tf_idf);
-			}
-			System.out.println();
-
-			double [][] answer = new double[2][files.length];//２{ファイル名・TF_IDF値}×ファイル数
-
-			for(int i=0; i<answer[0].length; i++) {
-				answer[0][i] = i;
-				answer[1][i] = 1;
-				for(int j=0; j<search_words.length; j++) {
-					if(datas_1[j][i] == 0) {
-
-					}else {
-						answer[1][i] *= (1+datas_1[j][i]);
-					}
-				}
-			}
-
-			//数合わせの無駄な配列
-			double [] fake = new double[files.length];
-			for(int i=0; i<fake.length; i++)fake[i]=0;
-
-			System.out.println(answer.length);
-			System.out.println(answer[0].length);
-			System.out.println(fake.length);
-			//answer配列をクイックソート
-			Functions.quick(answer[1], answer[0], fake, 0, answer[1].length-1);
-
-			//条件検索にも引っ掛かっているもののみを絞り込み
-			ArrayList<String> matched_w = new ArrayList<String>();
-			ArrayList<Double> tf_value = new ArrayList<Double>();
-			for(int i=0; i<answer[0].length; i++) {
-				matched_w.add(files[(int)answer[0][i]].getName());
-				tf_value.add(answer[1][i]);
-			}
-			for(int i=0; i<matched_w.size(); i++) {
-				second: for(int j=0; j<matched_r.length; j++) {
-					if(matched_w.get(i).equals(matched_r[j]) && tf_value.get(i)!=0.0) {
-						break second;
-					}
-					if(j==matched_r.length-1) {
-						matched_w.remove(i);
-						tf_value.remove(i);
-						i--;
-					}
-				}
-			}
-
-			//結果を出力
-			windowPrint(matched_w, tf_value);
-			setVisible(true);
-
-		}
-	}
-
-	public void windowPrint(ArrayList<String> matched_w) {
-		int fontsize = 12;//フォントサイズ
-		// ウィンドウの閉じ方
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		// 位置とサイズ
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		setBounds(screenSize.width/2, 0, screenSize.width/2, screenSize.height);
-
-		JPanel p1 = new JPanel();
-		p1.setLayout(new BoxLayout(p1, BoxLayout.Y_AXIS));
-		JLabel label = new JLabel();
-
-		for(int i=0; i<matched_w.size(); i++) {
-		p1.add(Box.createRigidArea(new Dimension(0,3*fontsize)));
-		label = new JLabel(matched_w.get(i));//演目表示ラベル追加
-		label.setFont(new Font(label.getFont().getName(), Font.BOLD, fontsize));
-		p1.add(label);
-		}
-		p1.add(Box.createVerticalGlue());
-		Container contentPane = getContentPane();
-		setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
-		getContentPane().add(p1);
-		getContentPane().add(Box.createHorizontalGlue());
-	}
-	public void windowPrint(ArrayList<String> matched_w, ArrayList<Double>tf_value) {
-
-		int fontsize = 12;//フォントサイズ
-		// ウィンドウの閉じ方
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		// 位置とサイズ
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		setBounds(screenSize.width/2, 0, screenSize.width/2, screenSize.height);
-
-		JPanel p1 = new JPanel();
-		p1.setLayout(new BoxLayout(p1, BoxLayout.Y_AXIS));
-		JLabel label = new JLabel();
-
-		for(int i=0; i<matched_w.size(); i++) {
-		p1.add(Box.createRigidArea(new Dimension(0,3*fontsize)));
-		label = new JLabel(matched_w.get(i) + ", " + tf_value.get(i));//演目表示ラベル追加
-		label.setFont(new Font(label.getFont().getName(), Font.BOLD, fontsize));
-		p1.add(label);
-		}
-		p1.add(Box.createVerticalGlue());
-		Container contentPane = getContentPane();
-		setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
-		getContentPane().add(Box.createHorizontalGlue());
-		getContentPane().add(p1);
-		getContentPane().add(Box.createHorizontalGlue());
-	}
-	*/
 }

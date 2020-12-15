@@ -49,6 +49,12 @@ public class Make_Morphorogical {
 				if(!features[6].equals("*"))morphorogical.add(features[6]);
 			}
 		}
+		for (Token token : tokens) {
+			String[] features = token.getAllFeaturesArray();
+			if(features[0].equals("動詞") || features[0].equals("形容詞")|| features[0].equals("名詞")) {
+				if(!features[6].equals("*"))morphorogical.add(token.getReading());
+			}
+		}
 
 		//ファイルを作成
 		File newfile = new File(pass_name + "\\morphorogical\\morphorogical_" + file_name);
