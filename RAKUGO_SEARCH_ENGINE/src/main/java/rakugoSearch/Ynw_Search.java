@@ -333,6 +333,7 @@ public class Ynw_Search extends JFrame {
 		getContentPane().add(p5_N);
 		getContentPane().add(p6);
 		getContentPane().add(p7);
+		getContentPane().add(Box.createHorizontalGlue());
 
 		for (int i = 0 ; i < final_matched_length; i++){
 			if (radio[i].isSelected()){
@@ -408,6 +409,7 @@ public class Ynw_Search extends JFrame {
 				scrollpane.removeAll();
 				p7.removeAll();
 				contentPane.remove(contentPane.getComponentCount()-1);
+				contentPane.remove(contentPane.getComponentCount()-1);
 
 				String[] matched = dataSearch(files, dataName, data, conditions);
 				TF_IDF tf = new TF_IDF();
@@ -417,12 +419,14 @@ public class Ynw_Search extends JFrame {
 				radio = new JRadioButton[final_matched_length];
 				bgroup_pp = new ButtonGroup();
 
-				for(int i=0; i<final_matched_length; i++) {
-					radio[i] = new JRadioButton(final_matched[0][i] + ", " + final_matched[1][i]);
-					radio[i].setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
-					radio[i].setPreferredSize(new Dimension(4*radio[i].getUIClassID().length()*fontsize, 4*fontsize));// ボタン追加
-					pp.add(radio[i]);
-					bgroup_pp.add(radio[i]);
+				for(int i=final_matched_length-1; i>=0; i--) {
+					if(final_matched[0][i]!=null || final_matched[0][i]!="") {
+						radio[i] = new JRadioButton(final_matched[0][i] + ", " + final_matched[1][i]);
+						radio[i].setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
+						radio[i].setPreferredSize(new Dimension(4*radio[i].getUIClassID().length()*fontsize, 4*fontsize));// ボタン追加
+						pp.add(radio[i]);
+						bgroup_pp.add(radio[i]);
+					}
 				}
 				JScrollPane scrollpane = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 				scrollpane.setBounds(0, 0, 510, 200);
@@ -438,6 +442,7 @@ public class Ynw_Search extends JFrame {
 				p7.add(btn3);
 				p7.add(scrollpane);
 				getContentPane().add(p7);
+				getContentPane().add(Box.createHorizontalGlue());
 			}
 		});
 
@@ -465,6 +470,8 @@ public class Ynw_Search extends JFrame {
 				for (int i = 0 ; i < check5.length; i++){
 					check5[i].setSelected(false);
 				}
+				//キーワードを削除
+				search_box.setText("");
 			}
 		});
 

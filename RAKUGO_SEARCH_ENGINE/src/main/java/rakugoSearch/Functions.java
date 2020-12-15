@@ -84,7 +84,6 @@ public class Functions {
 
 				//何も無かったらnullが返る
 				while((s = br.readLine()) != null){
-					System.out.println(s);
 					b = b + s;
 					b = b + "\n";
 				}
@@ -336,7 +335,6 @@ public class Functions {
 				//System.out.println(files[i] + "のデータを取得");
 				br.close();
 			} catch (Exception e) {
-				System.out.println(e.getMessage());
 			}
 		}
 		return data;
