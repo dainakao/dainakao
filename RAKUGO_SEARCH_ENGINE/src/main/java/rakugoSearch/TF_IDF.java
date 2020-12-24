@@ -125,7 +125,12 @@ public class TF_IDF extends JFrame{
 			Builder builder = Tokenizer.builder();
 			// ノーマルモード
 			Tokenizer normal = builder.build();
-			List<Token> tokens = normal.tokenize(search_word);
+	        Tokenizer tokenizer = null;
+	        try {
+	            tokenizer = builder.userDictionary("./user_dic.csv").build();
+	        } catch (IOException e1) {
+	        }
+			List<Token> tokens = tokenizer.tokenize(search_word);
 			//空白を取り除く
 			for (int i=0; i<tokens.size(); i++) {
 				System.out.print(tokens.get(i).getSurfaceForm());
@@ -135,7 +140,7 @@ public class TF_IDF extends JFrame{
 				}
 			}
 			System.out.println();
-			
+
 			search_words = new String[tokens.size()*2];
 			int counter=0;//一時的な変数
 			//原本を検索配列に代入

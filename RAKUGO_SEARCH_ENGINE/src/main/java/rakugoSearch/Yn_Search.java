@@ -18,10 +18,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 
 
-public class Ynw_Search extends JFrame {
+public class Yn_Search extends JFrame {
 	private static final long serialVersionUID = 1L;
 	// ウィンドウ本体
 
@@ -29,7 +28,7 @@ public class Ynw_Search extends JFrame {
 	public int Selected = 0;
 	JRadioButton[] radio;
 	ButtonGroup bgroup_pp;
-	public int final_matched_length = 0;
+	public int matched_length = 0;
 
 	//GUIを設定・表示
 	public void conditionSelect(int number,String pass_name, String[] files, String[][] dataName, boolean[][][] data){
@@ -237,7 +236,6 @@ public class Ynw_Search extends JFrame {
 		p5_N.add(Box.createVerticalGlue());
 
 
-
 		counter=0;
 		//チェックボックス作成
 		JPanel p6 = new JPanel();
@@ -257,18 +255,6 @@ public class Ynw_Search extends JFrame {
 			p6.add(check5[i]);
 			p6.add(Box.createRigidArea(new Dimension(0,distance)));
 		}
-
-
-		//検索ボックス作成
-		p6.add(Box.createRigidArea(new Dimension(0,3*distance)));
-		label = new JLabel("キーワード");//演目表示ラベル追加
-		label.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, 2*fontsize));
-		p6.add(label);
-		p6.add(Box.createRigidArea(new Dimension(0,distance)));
-		JTextField search_box = new JTextField();
-		search_box.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, 2*fontsize));
-		search_box.setMaximumSize(new Dimension(30*fontsize, 2*fontsize));
-		p6.add(search_box);
 
 		//不適切除外ボタン作成
 		p6.add(Box.createRigidArea(new Dimension(0,3*distance)));
@@ -302,15 +288,13 @@ public class Ynw_Search extends JFrame {
 		pp.setLayout(new BoxLayout(pp, BoxLayout.Y_AXIS));
 
 		String[] matched = dataSearch(files, dataName, data, conditions);
-		TF_IDF tf = new TF_IDF();
-		String[][] final_matched = tf.add_long_search_TF_IDF("Inverted_Index.csv", pass_name, search_box.getText(), matched);
-		final_matched_length = final_matched[0].length;
+		matched_length = matched.length;
 
-		radio = new JRadioButton[final_matched_length];
+		radio = new JRadioButton[matched_length];
 		bgroup_pp = new ButtonGroup();
 
-		for(int i=0; i<final_matched_length; i++) {
-			radio[i] = new JRadioButton(final_matched[0][i] + ", " + final_matched[1][i]);
+		for(int i=0; i<matched_length; i++) {
+			radio[i] = new JRadioButton(matched[i]);
 			radio[i].setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
 			radio[i].setPreferredSize(new Dimension(4*radio[i].getUIClassID().length()*fontsize, 4*fontsize));// ボタン追加
 			pp.add(radio[i]);
@@ -348,7 +332,7 @@ public class Ynw_Search extends JFrame {
 		getContentPane().add(p7);
 		getContentPane().add(Box.createHorizontalGlue());
 
-		for (int i = 0 ; i < final_matched_length; i++){
+		for (int i = 0 ; i < matched_length; i++){
 			if (radio[i].isSelected()){
 				Selected = i;
 			}
@@ -425,16 +409,14 @@ public class Ynw_Search extends JFrame {
 				contentPane.remove(contentPane.getComponentCount()-1);
 
 				String[] matched = dataSearch(files, dataName, data, conditions);
-				TF_IDF tf = new TF_IDF();
-				String[][] final_matched = tf.add_long_search_TF_IDF("Inverted_Index.csv", pass_name, search_box.getText(), matched);
-				final_matched_length = final_matched[0].length;
+				matched_length = matched.length;
 
-				radio = new JRadioButton[final_matched_length];
+				radio = new JRadioButton[matched_length];
 				bgroup_pp = new ButtonGroup();
 
-				for(int i=final_matched_length-1; i>=0; i--) {
-					if(final_matched[0][i]!=null || final_matched[0][i]!="") {
-						radio[i] = new JRadioButton(final_matched[0][i] + ", " + final_matched[1][i]);
+				for(int i=matched_length-1; i>=0; i--) {
+					if(matched[i]!=null || matched[i]!="") {
+						radio[i] = new JRadioButton(matched[i]);
 						radio[i].setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
 						radio[i].setPreferredSize(new Dimension(4*radio[i].getUIClassID().length()*fontsize, 4*fontsize));// ボタン追加
 						pp.add(radio[i]);
@@ -483,8 +465,6 @@ public class Ynw_Search extends JFrame {
 				for (int i = 0 ; i < check5.length; i++){
 					check5[i].setSelected(false);
 				}
-				//キーワードを削除
-				search_box.setText("");
 			}
 		});
 
@@ -495,8 +475,7 @@ public class Ynw_Search extends JFrame {
 				for (int i = 0 ; i < radio.length; i++){
 					if (radio[i].isSelected()){
 						//演目の選択内容確認
-						String[] keyword = radio[i].getText().split(",");
-						f.Start_detailView(keyword[0], pass_name);
+						f.Start_detailView(radio[i].getText(), pass_name);
 						repaint();
 
 					}

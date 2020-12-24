@@ -30,7 +30,7 @@ public class Menu extends JFrame{
 
 		//説明文
 		// ボタン作成
-		JButton btn1 = new JButton("データの設定");
+		JButton btn1 = new JButton("条件検索");
 		btn1.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, width/22));
 		btn1.setMaximumSize(new Dimension(width/2, 2*fontsize));// ボタン追加
 
@@ -42,7 +42,7 @@ public class Menu extends JFrame{
 
 		//説明文
 		// ボタン作成
-		JButton btn2 = new JButton("データの処理");
+		JButton btn2 = new JButton("キーワード検索");
 		btn2.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, width/22));
 		btn2.setMaximumSize(new Dimension(width/2, 2*fontsize));// ボタン追加
 
@@ -54,7 +54,7 @@ public class Menu extends JFrame{
 
 		//説明文
 		// ボタン作成
-		JButton btn3 = new JButton("データの検索");
+		JButton btn3 = new JButton("複合検索");
 		btn3.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, width/22));
 		btn3.setMaximumSize(new Dimension(width/2, 2*fontsize));// ボタン追加
 
@@ -75,24 +75,44 @@ public class Menu extends JFrame{
 		getContentPane().add(p3);
 		getContentPane().add(Box.createHorizontalGlue());
 
-		//設定クリック時の処理
+		//条件検索クリック時の処理
 		btn1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
+				//ファイルをリストアップ
+				String[] files = f.listUp(pass_name + "\\condition\\");
 
+				//ラベルを取得
+				String[][] dataName = f.dataName(pass_name);
+
+				//データを取得
+				boolean[][][] data = f.dataGet(pass_name, files, dataName);
+
+				//GUIを表示
+				f.Start_Yn_Search(0, pass_name, files, dataName, data);
 			}
 
 		});
-		//処理クリック時の処理
+		//キーワード検索クリック時の処理
 		btn2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
+				//ファイルをリストアップ
+				String[] files = f.listUp(pass_name + "\\condition\\");
 
+				//ラベルを取得
+				String[][] dataName = f.dataName(pass_name);
+
+				//データを取得
+				boolean[][][] data = f.dataGet(pass_name, files, dataName);
+
+				//GUIを表示
+				f.Start_Keyword_Search(0, pass_name, files, dataName, data);
 			}
 		});
-		//検索クリック時の処理
+		//複合検索クリック時の処理
 		btn3.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -107,7 +127,7 @@ public class Menu extends JFrame{
 				boolean[][][] data = f.dataGet(pass_name, files, dataName);
 
 				//GUIを表示
-				f.Start_Search(0, pass_name, files, dataName, data);
+				f.Start_Ynw_Search(0, pass_name, files, dataName, data);
 			}
 		});
 

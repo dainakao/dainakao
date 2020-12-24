@@ -10,19 +10,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Functions {
-	//GUI検索を起動
-	public void Start_Search(int number, String pass_name, String[] files, String[][] dataName, boolean[][][] data) {
+	//条件検索を起動
+	public void Start_Yn_Search(int number, String pass_name, String[] files, String[][] dataName, boolean[][][] data) {
+		Yn_Search rs= new Yn_Search();   // ウィンドウ作成
+		rs.conditionSelect(number, pass_name, files, dataName, data);
+		rs.setTitle("落語演目検索（条件検索）");
+		rs.setVisible(true);  // 表示
+	}
+	//キーワード検索を起動
+	public void Start_Keyword_Search(int number, String pass_name, String[] files, String[][] dataName, boolean[][][] data) {
+		Keyword_Search ks= new Keyword_Search();   // ウィンドウ作成
+		ks.conditionSelect(number, pass_name, files, dataName, data);
+		ks.setTitle("落語演目検索（キーワード検索）");
+		ks.setVisible(true);  // 表示
+	}
+	//複合検索を起動
+	public void Start_Ynw_Search(int number, String pass_name, String[] files, String[][] dataName, boolean[][][] data) {
 		Ynw_Search ys= new Ynw_Search();   // ウィンドウ作成
 		ys.conditionSelect(number, pass_name, files, dataName, data);
-		ys.setTitle("落語演目検索");
+		ys.setTitle("落語演目検索（複合検索）");
 		ys.setVisible(true);  // 表示
 	}
 	//GUI詳細を起動
 	public void Start_detailView(String file_name, String pass_name) {
-		Ynw_Search ys= new Ynw_Search();   // ウィンドウ作成
-		ys.detailView(file_name, pass_name);
-		ys.setTitle(file_name);
-		ys.setVisible(true);  // 表示
+		Detail_View dv= new Detail_View();   // ウィンドウ作成
+		dv.detailView(file_name, pass_name);
+		dv.setTitle(file_name);
+		dv.setVisible(true);  // 表示
+	}
+
+	//初期画面を開く
+	public void menuStart(String pass_name) {
+		Menu mo = new Menu();
+		mo.menuOpen(pass_name);
+		mo.setTitle("検索方法を選択");
+		mo.setVisible(true); // 表示
 	}
 
 
