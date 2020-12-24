@@ -1,6 +1,7 @@
 package ynwSearch;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,7 +88,12 @@ public class Search_Index {
 			Builder builder = Tokenizer.builder();
 			// ノーマルモード
 			Tokenizer normal = builder.build();
-			List<Token> tokens = normal.tokenize(search_word);
+	        Tokenizer tokenizer = null;
+	        try {
+	            tokenizer = builder.userDictionary(pass_name + "kuromoji-0.7.7\\src\\main\\resources\\user_dic.csv").build();
+	        } catch (IOException e1) {
+	        }
+			List<Token> tokens = tokenizer.tokenize(search_word);
 
 			search_words = new String[tokens.size()];
 			int counter=0;//一時的な変数

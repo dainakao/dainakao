@@ -8,7 +8,7 @@ public class Main {
 	public static void main(String[] args) {
 			try {
 				String pass_name;
-				pass_name = new File("..").getCanonicalPath() + "\\落語検索エンジン\\";
+				pass_name = new File("./").getCanonicalPath() + "\\";
 				System.out.println(pass_name);
 				f.menuStart(pass_name);
 			} catch (IOException e) {

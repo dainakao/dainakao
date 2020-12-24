@@ -156,73 +156,85 @@ public class Ynw_Search extends JFrame {
 		for(int i=0; i<C; i++) {
 			bgroup4[i] = new ButtonGroup();//ボタングループ
 
-			radio4_Y[i] = new JRadioButton("　");
-			radio4_Y[i].setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
-			bgroup4[i].add(radio4_Y[i]);//ボタンをグループに追加
-
 			radio4_U[i] = new JRadioButton("　");
 			radio4_U[i].setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
 			bgroup4[i].add(radio4_U[i]);//ボタンをグループに追加
 			radio4_U[i].setSelected(true);
+			
+			radio4_Y[i] = new JRadioButton("　");
+			radio4_Y[i].setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
+			bgroup4[i].add(radio4_Y[i]);//ボタンをグループに追加
 
 			radio4_N[i] = new JRadioButton(dataName[3][i]);
 			radio4_N[i].setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
 			bgroup4[i].add(radio4_N[i]);//ボタンをグループに追加
 			if(i<C/2) {
 				if(i==0) {
-					JLabel Yes_No = new JLabel("<html>出<br>る<br>　");//
-					Yes_No.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
-					Yes_No.setMaximumSize(new Dimension(fontsize, fontsize));
-					p4_Y.add(Yes_No);
-					p4_Y.add(Box.createRigidArea(new Dimension(0,distance)));
+					JLabel Yes_No;//
+					
 					Yes_No = new JLabel("<html>未<br>選<br>択");//
 					Yes_No.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
 					Yes_No.setMaximumSize(new Dimension(fontsize, fontsize));
 					p4_U.add(Yes_No);
 					p4_U.add(Box.createRigidArea(new Dimension(0,distance)));
+					
+					Yes_No = new JLabel("<html>出<br>る<br>　");//
+					Yes_No.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
+					Yes_No.setMaximumSize(new Dimension(fontsize, fontsize));
+					p4_Y.add(Yes_No);
+					p4_Y.add(Box.createRigidArea(new Dimension(0,distance)));
+
 					Yes_No = new JLabel("<html>出<br>な<br>い");//
 					Yes_No.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
 					Yes_No.setMaximumSize(new Dimension(fontsize, fontsize));
 					p4_N.add(Yes_No);
 					p4_N.add(Box.createRigidArea(new Dimension(0,distance)));
 				}
-				p4_Y.add(radio4_Y[i]);
-				p4_Y.add(Box.createRigidArea(new Dimension(0,distance)));
 				p4_U.add(radio4_U[i]);
 				p4_U.add(Box.createRigidArea(new Dimension(0,distance)));
+				
+				p4_Y.add(radio4_Y[i]);
+				p4_Y.add(Box.createRigidArea(new Dimension(0,distance)));
+
 				p4_N.add(radio4_N[i]);
 				p4_N.add(Box.createRigidArea(new Dimension(0,distance)));
 			}else {
 				if(i==C/2) {
-					JLabel Yes_No = new JLabel("<html>出<br>る<br>　");//
-					Yes_No.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
-					Yes_No.setMaximumSize(new Dimension(fontsize, fontsize));
-					p5_Y.add(Yes_No);
-					p5_Y.add(Box.createRigidArea(new Dimension(0,distance)));
+					JLabel Yes_No;
 					Yes_No = new JLabel("<html>未<br>選<br>択");//
 					Yes_No.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
 					Yes_No.setMaximumSize(new Dimension(fontsize, fontsize));
 					p5_U.add(Yes_No);
 					p5_U.add(Box.createRigidArea(new Dimension(0,distance)));
+					
+					Yes_No = new JLabel("<html>出<br>る<br>　");
+					Yes_No.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
+					Yes_No.setMaximumSize(new Dimension(fontsize, fontsize));
+					p5_Y.add(Yes_No);
+					p5_Y.add(Box.createRigidArea(new Dimension(0,distance)));
+					
 					Yes_No = new JLabel("<html>出<br>な<br>い");//
 					Yes_No.setFont(new Font("ＭＳ ゴシック", Font.PLAIN, fontsize));
 					Yes_No.setMaximumSize(new Dimension(fontsize, fontsize));
 					p5_N.add(Yes_No);
 					p5_N.add(Box.createRigidArea(new Dimension(0,distance)));
 				}
-				p5_Y.add(radio4_Y[i]);
-				p5_Y.add(Box.createRigidArea(new Dimension(0,distance)));
 				p5_U.add(radio4_U[i]);
 				p5_U.add(Box.createRigidArea(new Dimension(0,distance)));
+				
+				p5_Y.add(radio4_Y[i]);
+				p5_Y.add(Box.createRigidArea(new Dimension(0,distance)));
+				
 				p5_N.add(radio4_N[i]);
 				p5_N.add(Box.createRigidArea(new Dimension(0,distance)));
 			}
 		}
-		p4_Y.add(Box.createVerticalGlue());
 		p4_U.add(Box.createVerticalGlue());
+		p4_Y.add(Box.createVerticalGlue());
 		p4_N.add(Box.createVerticalGlue());
-		p5_Y.add(Box.createVerticalGlue());
+		
 		p5_U.add(Box.createVerticalGlue());
+		p5_Y.add(Box.createVerticalGlue());
 		p5_N.add(Box.createVerticalGlue());
 
 
@@ -269,6 +281,7 @@ public class Ynw_Search extends JFrame {
 
 		JCheckBox check6 = new JCheckBox(dataName[5][0]);
 		p6.add(check6);
+		check6.setSelected(true);
 
 		// ボタン作成
 		JButton btn1 = new JButton("　検索　");
@@ -326,11 +339,11 @@ public class Ynw_Search extends JFrame {
 		getContentPane().add(Box.createRigidArea(new Dimension(fontsize,0)));
 		getContentPane().add(p1);
 		getContentPane().add(Box.createRigidArea(new Dimension(3*fontsize,0)));
-		getContentPane().add(p4_Y);
 		getContentPane().add(p4_U);
+		getContentPane().add(p4_Y);
 		getContentPane().add(p4_N);
-		getContentPane().add(p5_Y);
 		getContentPane().add(p5_U);
+		getContentPane().add(p5_Y);
 		getContentPane().add(p5_N);
 		getContentPane().add(p6);
 		getContentPane().add(p7);

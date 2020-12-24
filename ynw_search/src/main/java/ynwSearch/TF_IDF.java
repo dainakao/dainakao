@@ -31,7 +31,7 @@ public class TF_IDF extends JFrame{
 
 				//dfを求める・dを求める
 				d=0;
-				df=1;
+				df=0;
 				ArrayList<Integer> DF = new ArrayList<Integer>();
 				for(int j=1; j<ind.get(ID).size();j=j+2) {
 					if(i==Integer.parseInt(ind.get(ID).get(j))) d++;
@@ -124,7 +124,12 @@ public class TF_IDF extends JFrame{
 			Builder builder = Tokenizer.builder();
 			// ノーマルモード
 			Tokenizer normal = builder.build();
-			List<Token> tokens = normal.tokenize(search_word);
+	        Tokenizer tokenizer = null;
+	        try {
+	            tokenizer = builder.userDictionary("./user_dic.csv").build();
+	        } catch (IOException e1) {
+	        }
+			List<Token> tokens = tokenizer.tokenize(search_word);
 			//空白を取り除く
 			for (int i=0; i<tokens.size(); i++) {
 				System.out.print(tokens.get(i).getSurfaceForm());

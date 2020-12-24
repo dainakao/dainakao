@@ -40,20 +40,33 @@ public class Make_Morphorogical {
 		// Searchモード
 		builder.mode(Mode.SEARCH);
 		Tokenizer search = builder.build();
-		List<Token> tokens = search.tokenize(parseWord);
+        Tokenizer tokenizer = null;
+        try {
+            tokenizer = builder.userDictionary("./user_dic.csv").build();
+        } catch (IOException e1) {
+        	System.out.println(parseWord);
+        }
+        System.out.println(parseWord);
+		List<Token> tokens = tokenizer.tokenize(parseWord);
 
 		ArrayList<String> morphorogical = new ArrayList<String>();
 		for (Token token : tokens) {
 			String[] features = token.getAllFeaturesArray();
-			if(features[0].equals("動詞") || features[0].equals("形容詞")|| features[0].equals("名詞")) {
-				if(!features[6].equals("*"))morphorogical.add(features[6]);
+			if(features[0].equals("動詞") || features[0].equals("形容詞")|| features[0].equals("名詞") || features[0].equals("カスタム名詞")){
+				if(!features[6].equals("*")) {
+					morphorogical.add(features[6]);
+				}
+			}
+			if(token.isUser() == true){
+				morphorogical.add(token.getSurfaceForm());
 			}
 		}
 		for (Token token : tokens) {
 			String[] features = token.getAllFeaturesArray();
-			if(features[0].equals("動詞") || features[0].equals("形容詞")|| features[0].equals("名詞")) {
-				if(!features[6].equals("*"))morphorogical.add(token.getReading());
+			if(features[0].equals("動詞") || features[0].equals("形容詞")|| features[0].equals("名詞") || features[0].equals("カスタム名詞")) {
+				if(!features[6].equals("*"))morphorogical.add(features[7]);
 			}
+			
 		}
 
 		//ファイルを作成
